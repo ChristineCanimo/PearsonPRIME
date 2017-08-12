@@ -1,0 +1,184 @@
+body{
+	background-color: rgb(212, 234, 228);
+	overflow: auto;
+}
+
+a:active, a:focus{
+	background:transparent;
+}
+#navdropdown{
+	background-color: rgb(0, 48, 87);
+}
+.loginbtn{
+	background-color: rgb(219, 0, 32);
+	border-radius: 20%;
+	color: white;
+	height: 200px;
+	width: 100%;
+}
+.activebtn{
+	border: 2px solid black;
+}
+.activetab{
+	background-color: #9e007e;
+}
+
+.wrapper{
+	display:block; 
+	width:100%; 
+	margin:0; 
+	padding:0; 
+	text-align:left; 
+	word-wrap:break-word;
+}
+
+.rowlogin{
+	background-color: white;
+	margin: 0px 20px 0px 20px;
+	padding: 20px 20px 20px 20px;
+
+}
+footer{
+	background-color: rgb(0, 90, 112);
+}
+.rowfooter h3{
+	font-family: Arial;
+	font-style: bold;
+}
+/* first column daw hahaha */
+.first{
+	margin-left:0; 
+	clear:left;}
+/* Sidebar */
+.container .sidebar{}
+
+.sidebar .sdb_holder{
+	margin-bottom:50px;
+}
+.sidebar .sdb_holder:last-child{
+	margin-bottom:0;
+}
+
+/* with side column left */
+.one_half, .one_third, .two_third, .one_quarter, .two_quarter, .three_quarter{
+	display:inline-block; 
+	float:left; 
+	margin:0 0 0 3.06748466257669%; 
+	list-style:none;
+}
+.one_fourth{
+	width:22.69938650306748%;
+}
+.one_third{
+	width:31.28834355828221%;
+}
+.one_half, .two_quarter{
+	width:48.46625766871166%;
+}
+.two_third{
+	width:65.6441717791411%;
+}
+.three_quarter{width:74.23312883435584%;
+}
+
+<div class="w3-col m4 w3-cell w3-padding-24 w3-cell-middle">
+
+    <div class="w3-card-2">
+    <div class="w3-container w3-center" style="background-color: rgb(00, 90, 112);color: white;">
+    <h2>LOGIN</h2>
+    </div>
+  <form class="w3-container" action="/action_page.php">
+    <p>      
+    <label class="w3-text-brown"><b>Username</b></label>
+    <input class="w3-input w3-border w3-sand" name="first" type="text"></p>
+    <p>      
+    <label class="w3-text-brown"><b>Password</b></label>
+    <input class="w3-input w3-border w3-sand" name="last" type="password"></p>
+    <p>
+    <button class="w3-btn" style="background-color: rgb(00, 90, 112);color: white;">Login</button></p>
+  </form>
+  </div>
+ </div>
+
+
+/* Media Queries
+--------------------------------------------------------------------------------------------------------------- */
+@-ms-viewport{width:device-width;}
+
+
+/* Max Wrapper Width - Laptop, Desktop etc.
+--------------------------------------------------------------------------------------------------------------- */
+@media screen and (min-width:978px){
+	.hoc{max-width:978px;}
+}
+
+
+/* Mobile Devices
+--------------------------------------------------------------------------------------------------------------- */
+@media screen and (max-width:978px){
+	#latest ul li{width:33.33%;}
+	#latest ul li:nth-child(3n+1){clear:left;}
+	#latest ul li:nth-child(6n+1){clear:none;}
+}
+
+
+@media screen and (max-width:900px){
+	.hoc{max-width:90%;}
+
+	#header{padding:30px 0;}
+	#header #logo{margin:7px 0 0 0;}
+
+	#mainav{}
+	#mainav ul{display:none;}
+	#mainav form{display:block;}
+
+	#breadcrumb{}
+
+	.container{}
+	#comments input[type="reset"]{margin-top:10px;}
+	.pagination li{display:inline-block; margin:0 5px 5px 0;}
+
+	#footer{}
+
+	#copyright{}
+	#copyright p:first-of-type{margin-bottom:10px;}
+}
+
+
+@media screen and (max-width:750px){
+	.imgl, .imgr{display:inline-block; float:none; margin:0 0 10px 0;}
+	.fl_left, .fl_right{display:block; float:none;}
+	.one_half, .one_third, .two_third, .one_quarter, .two_quarter, .three_quarter{display:block; float:none; width:auto; margin:0 0 30px 0; padding:0;}
+
+	#header{text-align:center;}
+	#header #logo{margin:0 0 15px 0;}
+
+	#pageintro{padding:150px 0;}
+	#pageintro article{max-width:none;}
+
+	.clrbox, .clrbox li{display:block; width:100%;}
+
+	#footer{padding-bottom:50px;}/* not necessary but looks better */
+}
+
+
+@media screen and (max-width:580px){
+	#latest ul li .txtoverlay .txtcaption{display:none;}
+}
+
+
+/* Other
+--------------------------------------------------------------------------------------------------------------- */
+@media screen and (max-width:650px){
+	.scrollable{display:block; width:100%; margin:0 0 30px 0; padding:0 0 15px 0; overflow:auto; overflow-x:scroll;}
+	.scrollable table{margin:0; padding:0; white-space:nowrap;}
+
+	.inline li{display:block; margin-bottom:10px;}
+	.pushright li{margin-right:0;}
+
+	.font-x2{font-size:1.4rem;}
+	.font-x3{font-size:1.6rem;}
+
+	.hoc.split{max-width:none; width:100%;}
+	.split .box{float:none; width:100%; padding:10% 5%;}
+}
