@@ -70,7 +70,7 @@ We’re proud of our people and of their talent, drive and enthusiasm. We have a
 
 <div class="w3-col m4">
 <h4 class=" w3-center ">ABOUT PEARSON</h4>
-<h5>Learning isn’t a destination, starting and stopping at the classroom door. It’s a never-ending road of discovery, challenge, inspiration, and wonder.</h5>
+
 <h6>In today's world, education isn’t just about gaining qualifications: it's about helping learners at every stage of the journey discover a love of learning that helps provide opportunities throughout their lives.
 <br>
 Because wherever learning flourishes, so do people.</h6>

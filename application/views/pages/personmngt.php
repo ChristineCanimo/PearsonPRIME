@@ -31,21 +31,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           &nbsp;
         </div>
         <div class="w3-col m2">
-          <button class="w3-button w3-margin w3-right w3-text-white w3-round-large" style="background-color: #EA067E"><img src="<?php echo base_url();?>images/addperson2.png" alt="">
-            </button>
+          <a href="<?php echo base_url(); ?>index.php/Employees/addnew" class="w3-button w3-margin w3-right w3-text-white w3-round-large" style="background-color: #EA067E"><img src="<?php echo base_url();?>images/addperson2.png" alt="">
+            </a>
         </div>
 
         <div class="w3-col m2">
-          <div class="">
-          <button class="w3-button w3-margin activebtn w3-right w3-text-white w3-round-large" style="background-color: #FFB81C"><img src="<?php echo base_url();?>images/persons2.png" alt=""><br>
+          <a href="<?php echo base_url(); ?>index.php/Employees/profile" class="w3-button w3-margin activebtn w3-right w3-text-white w3-round-large" style="background-color: #FFB81C"><img src="<?php echo base_url();?>images/persons2.png" alt=""><br>
           <i class="fa fa-angle-double-down w3-xlarge" aria-hidden="true"></i>
-            </button>
-            </div>
+            </a>
         </div>
 
         <div class="w3-col m2">
-          <button class="w3-button w3-margin  w3-right w3-text-white w3-round-large" style="background-color: #84BD00"><img src="<?php echo base_url();?>images/incentives2.png" alt="">
-            </button>
+          <a href="<?php echo base_url(); ?>index.php/Employees/referrals" class="w3-button w3-margin  w3-right w3-text-white w3-round-large" style="background-color: #84BD00"><img src="<?php echo base_url();?>images/incentives2.png" alt="">
+            </a>
       </div>
 
       <div class="w3-col m2">
@@ -133,7 +131,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="w3-col m4">
 <h4 class=" w3-center ">ABOUT PEARSON</h4>
-<h5>Learning isn’t a destination, starting and stopping at the classroom door. It’s a never-ending road of discovery, challenge, inspiration, and wonder.</h5>
+
 <h6>In today's world, education isn’t just about gaining qualifications: it's about helping learners at every stage of the journey discover a love of learning that helps provide opportunities throughout their lives.
 <br>
 Because wherever learning flourishes, so do people.</h6>
@@ -157,12 +155,11 @@ Because wherever learning flourishes, so do people.</h6>
 </div>
 
 <div id="signout" class="w3-modal">
-    <div class="w3-modal-content w3-round-large" style="width: 500px;">
-      <div class="w3-container" style="padding: 30px;">
+    <div class="w3-modal-content w3-round-large" style="width: 300px;">
+      <div class="w3-container" style="padding: 20px;">
         <span onclick="document.getElementById('signout').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-          <center><h1>LOGOUT Confirmation</h1></center>
         <br>
-          <center><h2>Are you sure you want to logout?</h2></center>
+          <center><h2>Are you sure you want to sign out?</h2></center>
 
             <a data-dismiss="modal" style="background-color: #DB0020" class="w3-button w3-text-white w3-round-large w3-right w3-margin-right">No</a></button>
             <a href="<?php echo base_url();?>index.php/Login_c/logout"  class="w3-button w3-text-white w3-margin-right w3-right w3-round-large" style="background-color: #DB0020">Yes</a></button><br>

@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login_c extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
+
+		$this->load->model('users_model');
 	}
 	
 	public function index()
@@ -16,20 +18,48 @@ class Login_c extends CI_Controller {
 		$this->load->view('pages/index');
 		}
 	}
-	
-	public function newhradmin(){
-		$li = $this->session->userdata('logged_in');
-		if($li == TRUE){
-			redirect ('Login_c/Signup');
-		}
-		else{
-			redirect ('Employees/index');
-		}
-	}
 
 	public function Signup(){
 		$this->load->view('pages/signup');
 	}
+
+	// Validate and store registration data in database
+	public function reg_validation() {
+
+	// Check validation for user input in SignUp form
+	$this->form_validation->set_rules('Username', 'Username', 'trim|required|is_unique[users.Username]');
+	$this->form_validation->set_rules('Password', 'Password', 'trim|required');
+	$this->form_validation->set_rules('PersonNumber', 'PersonNumber', 'trim|required|is_unique[users.PersonNumber]');
+
+	if ($this->form_validation->run() == FALSE) {
+	$this->load->view('usernameexist');
+	} else {
+        date_default_timezone_set("Asia/Manila");
+	$data = array(
+	'Username' => $this->input->post('Username'),
+	'Password' => $this->input->post('Password'),
+	'PersonNumber' => $this->input->post('PersonNumber'),
+	'date_added' => date("Y-m-d h:i:sa"),
+	'date_updated' => date("Y-m-d h:i:sa"),
+
+	);
+
+	if($this->users_model->check_user_exists($data['Username'])){
+		$data['exist'] = "The username already exists";
+		$this->load->view('usernameexist', $data);
+	}else{
+		$result = $this->users_model->registration_insert($data);
+	if ($result == TRUE) {
+	redirect('Employees/signupsuccess', $data);
+	} else {
+	echo 'Username already exist!';
+	$this->load->view('usernameexist', $data);
+	}
+	}
+	}
+	}
+
+
 	public function login() {
 
 			$this->load->helper(array('form', 'url'));

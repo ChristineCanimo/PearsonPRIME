@@ -11,7 +11,19 @@ class Employees extends CI_Controller {
 		
 		$this->load->view('pages/personmngt');
 	}
-	
+	public function newhradmin(){
+		$li = $this->session->userdata('logged_in');
+		if($li == TRUE){
+			redirect ('Login_c/Signup');
+		}
+		else{
+			redirect ('Employees/index');
+		}
+	}
+
+	public function signupsuccess(){
+		$this->load->view('pages/success');
+	}
 	public function profile() {
 			
 		$this->load->view('pages/personprofile');

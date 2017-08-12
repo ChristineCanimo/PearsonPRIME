@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </button>
       <div id="demo" class="w3-dropdown-content w3-bar-block w3-card-2">
         <a href="#" class="w3-bar-item w3-button">Change Password</a>
-        <a href="#" class="w3-bar-item w3-button">Sign Out</a>
+        <button onclick="document.getElementById('signout').style.display='block'" class="w3-bar-item w3-button">Sign Out</button>
       </div>
     </div>
   </div>

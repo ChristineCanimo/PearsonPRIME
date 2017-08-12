@@ -9,6 +9,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link href="<?php echo base_url()?>css/background.css" rel="stylesheet">
   <link href="<?php echo base_url()?>css/font.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+</style>
 </head>
 <body>
 <div class="w3-bar  w3-margin-bottom" style="background-color: midnightblue;">
@@ -59,20 +76,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   &nbsp;
   </div>
 
-  <div class="w3-padding-24 w3-col m8  w3-white w3-round-large">
-
-
-
+  <div class="w3-padding-24 w3-col m8  w3-white w3-round-large" style="padding: 70px;">
   <h1> Sign Up New HR Administrator</h1><br>
     <div class="w3-row-padding">
       <div class="w3-col m5">
+
+      <div class="alert" style="color: #007fa3;">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <strong>Success!</strong> The new HR Admministrator has been added.
+      </div>
+
         <form role="search" action="<?php echo base_url(); ?>index.php/Login_c/reg_validation" method="post">
         <h3>Username:</h3>
-        <input type="text" name=Username required="" class="w3-input w3-border w3-round-large w3-white"><br>
+        <input type="text" name=Username class="w3-input w3-border w3-round-large w3-white"><br>
         <h3>Password:</h3>
-        <input type="password" name="Password" required="" class="w3-input w3-border w3-round-large w3-white"><br>
+        <input type="password" name="Password" class="w3-input w3-border w3-round-large w3-white"><br>
         <h3>Person Number:</h3>
-        <input type="Number" name="PersonNumber" required="" class="w3-input w3-border w3-round-large w3-white">
+        <input type="Number" name="PersonNumber" class="w3-input w3-border w3-round-large w3-white">
       </div>
       <div class="w3-col m1">
       &nbsp;
