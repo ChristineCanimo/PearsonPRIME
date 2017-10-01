@@ -10,13 +10,9 @@ class Login extends CI_Controller {
 	
 	public function index()
 	{
-		$li = $this->session->userdata('logged_in');
-		if($li == TRUE){
-			redirect ('Employees/index');
-		}
-		else{
+		
 		$this->load->view('login');
-		}
+		
 	}
 
 	public function Signup(){
@@ -95,7 +91,7 @@ class Login extends CI_Controller {
 					);
 					$this->session->set_userdata($newdata);
 					$this->users_model->history();
-					redirect ('Employees/index');
+					redirect ('Login/index');
 				}
 				
 			}

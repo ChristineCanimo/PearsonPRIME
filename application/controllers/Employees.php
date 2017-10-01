@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Employees extends CI_Controller {
+class Interview extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 	}
@@ -9,8 +9,19 @@ class Employees extends CI_Controller {
 	public function index()
 	{
 		
-		$this->load->view('personmngt');
+		$this->load->view('fillupinfo');
 	}
+
+	public function fillupeduc() {
+			
+		$this->load->view('fillupeduc');
+	}
+
+	public function fillupinitial() {
+			
+		$this->load->view('fillupinitial');
+	}
+
 	public function newhradmin(){
 		$li = $this->session->userdata('logged_in');
 		if($li == TRUE){
@@ -24,10 +35,7 @@ class Employees extends CI_Controller {
 	public function signupsuccess(){
 		$this->load->view('pages/success');
 	}
-	public function profile() {
-			
-		$this->load->view('pages/personprofile');
-	}
+	
 
 	public function employmentedit(){
 

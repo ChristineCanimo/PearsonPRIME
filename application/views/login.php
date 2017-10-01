@@ -8,31 +8,30 @@
         <title>Pearson HR - Login</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="favicon.ico">
 
         <!--Google Font link-->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 
-        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/slick/slick.css"> 
-        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/slick/slick-theme.css">
-        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/animate.css">
-        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/iconfont.css">
-        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/font-awesome.min.css">
-        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.css">
-        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootsnav.css">
+        <link rel="stylesheet" href="<?php echo base_url()?>assetsko/css/slick/slick.css"> 
+        <link rel="stylesheet" href="<?php echo base_url()?>assetsko/css/slick/slick-theme.css">
+        <link rel="stylesheet" href="<?php echo base_url()?>assetsko/css/animate.css">
+        <link rel="stylesheet" href="<?php echo base_url()?>assetsko/css/iconfont.css">
+        <link rel="stylesheet" href="<?php echo base_url()?>assetsko/css/font-awesome.min.css">
+        <link rel="stylesheet" href="<?php echo base_url()?>assetsko/css/bootstrap.css">
+        <link rel="stylesheet" href="<?php echo base_url()?>assetsko/css/magnific-popup.css">
+        <link rel="stylesheet" href="<?php echo base_url()?>assetsko/css/bootsnav.css">
 
-        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css">
+        <link rel="stylesheet" href="<?php echo base_url()?>assetsko/css/style.css">
         <!--<link rel="stylesheet" href="assets/css/colors/maron.css">-->
 
         <!--Theme Responsive css-->
-        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/responsive.css" />
+        <link rel="stylesheet" href="<?php echo base_url()?>assetsko/css/responsive.css" />
 
-        <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="assetsko/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
          <style>
 		.bg { 
-	    background-image: url("assets/img/bg1.jpg");
+	    background-image: url("assetsko/img/bg1.jpg");
 	    height: 100%; 
 	    background-position: center;
 	    background-repeat: no-repeat;
@@ -119,7 +118,40 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Sign in</h4>
+          <h4 class="modal-title">Admin? Login Please.</h4>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <form action="<?php echo base_url(); ?>index.php/Login/login" method="post">
+
+              <div class="input-group">
+			      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+			      <input id="email" type="text" class="form-control" name="Username" placeholder="Username" required="">
+			    </div><br>
+			    <div class="input-group">
+			      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+			      <input id="password" type="password" class="form-control" name="Password" placeholder="Password" required="">
+			    </div>
+			    <br>
+               <div class="form-group">
+                 <input type="submit" class="btn btn-block btn-lg btn-primary" value="Login"/>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="interview" role="dialog">
+    <div class="modal-dialog">
+
+       <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Login for Interview</h4>
         </div>
 
         <div class="modal-body">
@@ -146,18 +178,18 @@
   </div>
         <!-- JS includes -->
 
-        <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
-        <script src="assets/js/vendor/bootstrap.min.js"></script>
-        <script src="assets/js/owl.carousel.min.js"></script>
-        <script src="assets/js/jquery.magnific-popup.js"></script>
-        <script src="assets/css/slick/slick.js"></script>
-        <script src="assets/css/slick/slick.min.js"></script>
-        <script src="assets/js/jquery.collapse.js"></script>
+        <script src="assetsko/js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="assetsko/js/vendor/bootstrap.min.js"></script>
+        <script src="assetsko/js/owl.carousel.min.js"></script>
+        <script src="assetsko/js/jquery.magnific-popup.js"></script>
+        <script src="assetsko/css/slick/slick.js"></script>
+        <script src="assetsko/css/slick/slick.min.js"></script>
+        <script src="assetsko/js/jquery.collapse.js"></script>
 
 
 
-        <script src="assets/js/plugins.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script src="assetsko/js/plugins.js"></script>
+        <script src="assetsko/js/main.js"></script>
 
     </body>
 </html>
