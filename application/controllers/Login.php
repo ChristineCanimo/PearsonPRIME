@@ -10,9 +10,13 @@ class Login extends CI_Controller {
 	
 	public function index()
 	{
-		
-		$this->load->view('login');
-		
+		$li = $this->session->userdata('logged_in');
+		if($li == TRUE){
+			redirect ('Interview/index');
+		}
+		else{
+			$this->load->view('login');
+		}
 	}
 
 	public function Signup(){
@@ -79,19 +83,32 @@ class Login extends CI_Controller {
 				$this->users_model->login($data['Username'], $data ['Password']);
 		
 				$result=$this->users_model->login($data['Username'], $data ['Password']);
-				
-				if(!$result) {
-					redirect ('login_c/incorrect');
-				}
-				
-				else {
-					$newdata = array(
+				foreach ($result as $row)
+        		{
+                $usertype = $row['usertype'];
+        		}
+
+                if(!$result) {
+                    redirect ('login_c/incorrect');
+                }
+                
+                else if ($usertype == 'admin') {
+					$login = array(
 			        'logged_in' => TRUE,
 			        'PersonNumber' => $result['0']['PersonNumber']
 					);
-					$this->session->set_userdata($newdata);
+					$this->session->set_userdata($login);
 					$this->users_model->history();
-					redirect ('Login/index');
+					redirect ('Login/logged');
+
+				} else {
+					$login = array(
+			        'logged_in' => TRUE,
+			        'PersonNumber' => $result['0']['PersonNumber'],
+					);
+					$this->session->set_userdata($login);
+					$this->users_model->history();
+					redirect ('openforms/');
 				}
 				
 			}

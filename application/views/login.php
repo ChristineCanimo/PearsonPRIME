@@ -99,8 +99,7 @@
                                     </div><!-- End off slid item -->
                                 </div>
                                 <div class="home_btns m-top-40">
-                                            <a href="" class="btn btn-primary m-top-20" data-toggle="modal" data-target="#myModal">Login as Admin</a>
-                                            <a href="" class="btn btn-primary m-top-20" data-toggle="modal" data-target="#interview">For Interview Only</a>
+                                            <a href="" class="btn btn-primary m-top-20" data-toggle="modal" data-target="#myModal">Login</a>
                                         </div>
                             </div>
 
@@ -118,7 +117,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Admin? Login Please.</h4>
+          <h4 class="modal-title">Login Please.</h4>
         </div>
 
         <div class="modal-body">
@@ -144,38 +143,7 @@
     </div>
   </div>
 
-  <div class="modal" id="interview" role="dialog">
-    <div class="modal-dialog">
-
-       <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Login for Interview</h4>
-        </div>
-
-        <div class="modal-body">
-          <div class="form-group">
-            <form action="<?php echo base_url(); ?>index.php/Login/login" method="post">
-
-              <div class="input-group">
-			      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-			      <input id="email" type="text" class="form-control" name="Username" placeholder="Username" required="">
-			    </div><br>
-			    <div class="input-group">
-			      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-			      <input id="password" type="password" class="form-control" name="Password" placeholder="Password" required="">
-			    </div>
-			    <br>
-               <div class="form-group">
-                 <input type="submit" class="btn btn-block btn-lg btn-primary" value="Login"/>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+ 
         <!-- JS includes -->
 
         <script src="assetsko/js/vendor/jquery-1.11.2.min.js"></script>

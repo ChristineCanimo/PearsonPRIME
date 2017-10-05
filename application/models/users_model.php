@@ -43,8 +43,9 @@ class users_model extends CI_Model {
 
 	// Read data using username and password
 	public function login($username, $password) {
+
 		$this->db->where('Username',$username);
-        $result = $this->db->get('login');
+        $result = $this->db->get('employees');
         
         $result = $result->result_array();
         
@@ -86,6 +87,17 @@ class users_model extends CI_Model {
 
         $this->db->where('history_id', $a);
         $this->db->update('history', $history);
+    }
+
+    public function admininfo(){
+        $li = $this->session->userdata('logged_in');
+        $pn = $this->session->userdata('PersonNumber');
+
+        $this->db->where('PersonNumber', $li);
+        $query = $this->db->get('employees');
+
+        return $query->result(); 
+
     }
 	
 }
