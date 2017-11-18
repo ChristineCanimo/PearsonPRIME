@@ -31,7 +31,27 @@ class record_model extends CI_Model {
         return;
     }
 
-    public function get_data(){
+    public function get_data($id){
+        $li = $this->session->userdata('PersonNumber');
+        $id1 = $this->input->post('ApplicantNumber');
+
+        $this->db->from('interview');
+        $this->db->where('interview.ApplicantNumber', $id);
+
+        $this->db->from('educinfo');
+        $this->db->where('educinfo.ApplicantNumber', $id);
+
+        $this->db->from('prevemploy');
+        $this->db->where('prevemploy.ApplicantNumber', $id);
+
+        $this->db->from('employees');
+        $this->db->where('PersonNumber', $li);
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+        public function get_datafrmtbl(){
         $li = $this->session->userdata('PersonNumber');
         $id = $this->input->post('ApplicantNumber');
 
@@ -51,9 +71,31 @@ class record_model extends CI_Model {
         return $query->result();
     }
 
-    public function get_second(){
+    public function get_second1(){
         $li = $this->session->userdata('PersonNumber');
         $id = $this->input->post('ApplicantNumber');
+
+        $this->db->from('interview');
+        $this->db->where('interview.ApplicantNumber', $id);
+
+        $this->db->from('educinfo');
+        $this->db->where('educinfo.ApplicantNumber', $id);
+
+        $this->db->from('prevemploy');
+        $this->db->where('prevemploy.ApplicantNumber', $id);
+
+        $this->db->from('initialresult');
+        $this->db->where('initialresult.ApplicantNumber', $id);
+
+        $this->db->from('employees');
+        $this->db->where('PersonNumber', $li);
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function get_second($id){
+        $li = $this->session->userdata('PersonNumber');
 
         $this->db->from('interview');
         $this->db->where('interview.ApplicantNumber', $id);
@@ -82,6 +124,14 @@ class record_model extends CI_Model {
         return $query->result();
     }
 
+    public function ids($id){
+
+        $this->db->from('interview');
+        $this->db->where('ApplicantNumber', $id);
+
+        $query = $this->db->get();
+        return $query->result();
+    }
 
     public function get_pending(){   
         $li = $this->session->userdata('PersonNumber');
@@ -209,7 +259,7 @@ class record_model extends CI_Model {
 
     function cntinter(){
     date_default_timezone_set("Asia/Manila");
-        $query = $this->db->query('SELECT count(Status) as cntinter FROM interview where status = "Pending"');
+        $query = $this->db->query('SELECT count(Status) as cntinter FROM interview where status = "For initial"');
         return $query->result();
     }
 }

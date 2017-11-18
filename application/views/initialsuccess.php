@@ -314,7 +314,10 @@
                  <br>
 
                  <a href="<?php echo base_url(); ?>index.php/Interview" style=""><i class="ace-icon fa fa-arrow-left bigger-110"></i>&nbsp;Insert New Applicant</a>
-                 <a href="<?php echo base_url(); ?>index.php/recordmanagement/" style="float: right;">Proceed to Final Interview&nbsp;<i class="ace-icon fa fa-arrow-right bigger-110"></i></a>
+
+                 <?php foreach($ids as $id){?>
+                 <a href="<?php echo base_url(); ?>index.php/recordmanagement/tofinal/<?php echo $id =  $id->ApplicantNumber;?>" style="float: right;">Proceed to Final Interview&nbsp;<i class="ace-icon fa fa-arrow-right bigger-110"><?php }?></i></a>
+
 
 
                 </div><!-- PAGE CONTENT ENDS -->

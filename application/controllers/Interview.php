@@ -121,7 +121,8 @@ class Interview extends CI_Controller {
 				'ApplicantNumber' => $id, 
 				'Company' => $this->input->post('Company'), 
 				'Job' => $this->input->post('Job'), 
-				'Duration' => $this->input->post('Duration')
+				'Duration' => $this->input->post('Duration'),
+				'NoExperience' => $this->input->post('NoExperience')
 
 			);
 
@@ -143,7 +144,7 @@ class Interview extends CI_Controller {
 			$this->session->unset_userdata('fillupinfo', $sess_array);
 			$data['message_display'] = 'Successfully Logout';
 
-			redirect('recordmanagement/success');
+			redirect('recordmanagement/success/'.$id);
 		}
 	}
 
@@ -263,6 +264,5 @@ class Interview extends CI_Controller {
 		
 		}
 
-    
-		
+	
 }

@@ -34,7 +34,7 @@ class openforms extends CI_Controller
 			if($this->input->post()) {
 			$data = $this->input->post();	
 
-			$result = $this->record_model->get_data($data);
+			$result = $this->record_model->get_datafrmtbl($data);
 
 			$li = $this->session->userdata('logged_in');
 			if($li == TRUE){

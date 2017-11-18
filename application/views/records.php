@@ -236,7 +236,7 @@
 								<!-- PAGE CONTENT BEGINS -->
 <?php  
  $connect = mysqli_connect("localhost", "root", "", "login");  
- $query ="SELECT * FROM `interview` WHERE `Status` = 'Pending'";  
+ $query ="SELECT * FROM `interview` WHERE `Status` = 'For initial'";  
  $result = mysqli_query($connect, $query);  
  ?>  
 
@@ -253,72 +253,69 @@
 							              </h1>
 							            </div><!-- /.page-header -->
 
-										<div class="clearfix">
-											<div class="pull-right tableTools-container"></div>
-										</div>
-										<div class="table-header">
-											Employee
-										</div>
+                          <div class="clearfix">
+                      <div class="pull-right tableTools-container"></div>
+                    </div>
+                    <div class="table-header">
+                      Employee
+                    </div>
 
-										<!-- div.table-responsive -->
+                    <!-- div.table-responsive -->
 
-										<!-- div.dataTables_borderWrap -->
-										<div>
-											<table id="dynamic-table" class="table table-striped table-bordered table-hover" style="overflow:auto" autocomplete="on">
-												<thead>
-													<tr>
+                    <!-- div.dataTables_borderWrap -->
+                    <div>
+                      <table id="dynamic-table" class="table table-striped table-bordered table-hover" style="overflow:auto" autocomplete="on">
+                        <thead>
+                          <tr>
 
-													    <th>Firstname</th>
-														<th class="hidden-480">Lastname</th>
+                              <th>Firstname</th>
+                            <th class="hidden-480">Lastname</th>
 
-														<th>
-															<i class="ace-icon fa fa-file-o bigger-110 hidden-480"></i>
-															Email
-														</th>
-														<th class="hidden-480">Gender</th>
-                                                        <th>Contact Information</th>
-														<th>Interview Status</th>
-														
+                            <th class="hidden-480">
+                              Age
+                            </th>
+                            <th class="hidden-480">Gender</th>
+                                                        <th>Course</th>
+                            <th>Interview Status</th>
+                            
 
-													</tr>
-												</thead>
+                          </tr>
+                        </thead>
 
 
-												<tbody>
-												<?php
-												while($row=mysqli_fetch_array($result))
-												{
-													echo '
-													<tr>
-														<td class="center">
-															<form action="getdata" method="post">
-															<input type="hidden" value="'.$row["ApplicantNumber"].'" name="ApplicantNumber">
-															<input type="submit" style="border:none; background:none; color:blue" value="'.$row["FirstName"].'">
-															</form>
-														</td>
-														<td>'.$row["LastName"].'</td>
-														<td>'.$row["Email"].'</td>
-														<td class="hidden-480">'.$row["Gender"].'</td>
-														<td>'.$row["Contact"].'</td>
-														<td>'.$row["Status"].'</td>
+                        <tbody>
+                        <?php
+                        while($row=mysqli_fetch_array($result))
+                        {
+                          echo '
+                          <tr>
+                            <td class="center">
+                              <form action="getdata" method="post">
+                              <input type="hidden" value="'.$row["ApplicantNumber"].'" name="ApplicantNumber">
+                              <input type="submit" style="border:none; background:none; color:blue" value="'.$row["FirstName"].'">
+                              </form>
+                            </td>
+                            <td>'.$row["LastName"].'</td>
+                            <td>'.$row["Email"].'</td>
+                            <td class="hidden-480">'.$row["Gender"].'</td>
+                            <td>'.$row["Contact"].'</td>
+                            <td>'.$row["Status"].'</td>
 
                                                        
-															</div>
-														</td>
-													</tr>
-													';
-													} 	
-													?>	
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
+                              </div>
+                            </td>
+                          </tr>
+                          ';
+                          }   
+                          ?>  
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
 
 
-										
-               
-                  <div class="hr hr-24"></div>
+                    
 
                   <div class="row">
                     <div class="col-xs-12 col-sm-12">
@@ -490,7 +487,14 @@
                                   <tr>
                                     <td>
                                       <div style="padding: 5px;">
-                              <label style="float: right;" for="form-field-8">Company : </label>
+                              <label style="float: right;" for="form-field-8"> <?php if($record->NoExperience == 'No Experience') echo "No Experience at all"; ?></label>
+                                    </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <div style="padding: 5px;">
+                              <label style="float: right;" for="form-field-8"><?php if($record->Company != Null) echo "</del> Company : </del> "; ?></label>
                                     </div>
                                     </td>
                                      <td>
@@ -500,7 +504,7 @@
                                   <tr>
                                     <td>
                                       <div style="padding: 5px;">
-                              <label style="float: right;" for="form-field-8">Position/Job : </label>
+                              <label style="float: right;" for="form-field-8"><?php if($record->Job != Null) echo "</del> Position/Job : </del> "; ?> </label>
                                     </div>
                                     </td>
                                      <td>
@@ -510,7 +514,7 @@
                                   <tr>
                                     <td>
                                       <div style="padding: 5px;">
-                              <label style="float: right;" for="form-field-8">Duration : </label>
+                              <label style="float: right;" for="form-field-8"><?php if($record->Duration != Null) echo "</del> Duration : </del> "; ?> </label>
                                     </div>
                                     </td>
                                      <td>
@@ -547,7 +551,7 @@
                                   <tr>
                                     <td>
                                       <div style="padding: 5px;">
-                              <label style="float: right;" for="form-field-8">Referred By : </label>
+                              <label style="float: right;" for="form-field-8"><?php if($record->Employee != Null) echo "</del> Referred By : </del> "; ?></label>
                                     </div>
                                     </td>
                                      <td>

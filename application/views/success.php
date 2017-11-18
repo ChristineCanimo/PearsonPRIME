@@ -315,9 +315,9 @@
                  <br>
 
                  <a href="<?php echo base_url(); ?>index.php/Interview" style=""><i class="ace-icon fa fa-arrow-left bigger-110"></i>&nbsp;Insert New Applicant</a>
-                 <a href="<?php echo base_url(); ?>index.php/recordmanagement/" style="float: right;">Proceed to Initial Interview&nbsp;<i class="ace-icon fa fa-arrow-right bigger-110"></i></a>
-
-
+                 <?php foreach($ids as $id){?>
+                 <a href="<?php echo base_url(); ?>index.php/recordmanagement/getdata/<?php echo $id =  $id->ApplicantNumber;?><?php }?>" style="float: right;">Proceed to Initial Interview&nbsp;<i class="ace-icon fa fa-arrow-right bigger-110"></i></a>
+               
                 </div><!-- PAGE CONTENT ENDS -->
               </div><!-- /.col -->
             </div><!-- /.row -->

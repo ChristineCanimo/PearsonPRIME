@@ -38,59 +38,95 @@ class RecordManagement extends CI_Controller
 	redirect ('', $data);
 	}
 
-	public function second()
+	public function tofinal($id='')
+	{
+		redirect('recordmanagement/second/'.$id);
+	}
+
+	public function second($id='')
     {
     	$this->load->model('record_model');
 			
-			if($this->input->post()) {
-			$data = $this->input->post();	
-
-			$result = $this->record_model->get_data($data);
-
 			$li = $this->session->userdata('logged_in');
 			if($li == TRUE){
 			$this->data['logs'] = $this->record_model->logged_in();
-			$this->data['records'] = $this->record_model->get_second();
+			$this->data['records'] = $this->record_model->get_second($id);
 			$this->data['referrals'] = $this->record_model->referral();
 			$this->data['depts'] = $this->record_model->get_dept();
 	    	$this->load->view('finalrecords', $this->data);
     	}
-    	}
 	}
 
-
-    public function getdata()
+	public function second1()
     {
     	$this->load->model('record_model');
 			
-			if($this->input->post()) {
 			$data = $this->input->post();	
 
-			$result = $this->record_model->get_data($data);
+			$result = $this->record_model->get_datafrmtbl($data);
 
 			$li = $this->session->userdata('logged_in');
 			if($li == TRUE){
-			$this->data['records'] = $this->record_model->get_data();
+			$this->data['logs'] = $this->record_model->logged_in();
+			$this->data['records'] = $this->record_model->get_second1();
+			$this->data['referrals'] = $this->record_model->referral();
+			$this->data['depts'] = $this->record_model->get_dept();
+	    	$this->load->view('finalrecords', $this->data);
+    	}
+	}
+
+	public function getdatafrmtable()
+    {
+    	$this->load->model('record_model');
+			
+			$data = $this->input->post();	
+
+			$result = $this->record_model->get_datafrmtbl($data);
+
+			$li = $this->session->userdata('logged_in');
+			if($li == TRUE){
+			$this->data['records'] = $this->record_model->get_datafrmtbl();
 			$this->data['referrals'] = $this->record_model->referral();
 			$this->data['logs'] = $this->record_model->logged_in();
 			$this->data['depts'] = $this->record_model->get_dept();
 	    	$this->load->view('records', $this->data);
     	}
+    }
+
+    public function getdata($id = '')
+    {
+    	$this->load->model('record_model');
+			
+			$li = $this->session->userdata('logged_in');
+			if($li == TRUE){
+			$this->data['records'] = $this->record_model->get_data($id);
+			$this->data['referrals'] = $this->record_model->referral();
+			$this->data['logs'] = $this->record_model->logged_in();
+			$this->data['depts'] = $this->record_model->get_dept();
+	    	$this->load->view('records', $this->data);
     	}
+    	
+	}
+
+	public function toinitial($id='')
+	{
+		redirect('recordmanagement/getdata/'.$id);
 	}
 
 	function insert_initial()
     {
     	$this->load->model('record_model');
+		$id = $this->input->post('ApplicantNumber');
 			
 			if($this->input->post()) {
 			$data = $this->input->post();	
 
 			$result = $this->record_model->insert_initial($data);
 
-			redirect('recordmanagement/initialsuccess');
+			redirect('recordmanagement/initialsuccess/'.$id);
 		}
 	}
+
 
 	function insert_final()
     {
@@ -105,12 +141,24 @@ class RecordManagement extends CI_Controller
 		}
 	}
 
-	function initialsuccess(){
+	function initialsuccess1(){
     	$this->load->model('record_model');
 		$li = $this->session->userdata('logged_in');
 		if($li == TRUE){
 			
 		$this->data['logs'] = $this->record_model->logged_in();
+
+	    $this->load->view('initialsuccess', $this->data);
+	}
+	}
+
+		function initialsuccess($id=' '){
+    	$this->load->model('record_model');
+		$li = $this->session->userdata('logged_in');
+		if($li == TRUE){
+			
+		$this->data['logs'] = $this->record_model->logged_in();
+		$this->data['ids'] = $this->record_model->ids($id);
 
 	    $this->load->view('initialsuccess', $this->data);
 	}
@@ -127,12 +175,15 @@ class RecordManagement extends CI_Controller
 	}
 	}
 
-	function success(){
+	function success($id = ' '){
     	$this->load->model('record_model');
 		$li = $this->session->userdata('logged_in');
+		$id1 = $this->session->userdata('ApplicantNumber');
 		if($li == TRUE){
 			
 		$this->data['logs'] = $this->record_model->logged_in();
+		$this->data['ids'] = $this->record_model->ids($id);
+		
 
 	    $this->load->view('success', $this->data);
 	}

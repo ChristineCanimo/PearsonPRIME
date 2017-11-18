@@ -342,6 +342,15 @@
                   </div>
 
                   <div class="form-group">
+                  <div class="checkbox">
+                          <label class="col-sm-3 control-label no-padding-right" for="form-field-1">
+                            <input type="checkbox" name="NoExperience" value="No Experience" />
+                            <span class="lbl">No Work Experience at all</span>
+                          </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 
                         <i class="ace-icon fa fa-plus bigger-210"></i> </label>
                   </div>
@@ -404,7 +413,7 @@
                     </div>
                   </section>
                               <input type="hidden" name="date_added" value="<?php date_default_timezone_set("Asia/Manila"); echo date("Y/m/d h:i:sa") ?>">
-                              <input type="hidden" name="Status" value="Pending">
+                              <input type="hidden" name="Status" value="For initial">
           <br>
                             
 

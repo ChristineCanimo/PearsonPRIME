@@ -276,7 +276,7 @@
 													echo '
 													<tr>
 														<td class="center">
-															<form action="second" method="post">
+															<form action="second1" method="post">
 															<input type="hidden" value="'.$row["ApplicantNumber"].'" name="ApplicantNumber">
 															<input type="submit" style="border:none; background:none; color:blue" value="'.$row["ApplicantName"].'">
 															</form>
@@ -473,7 +473,14 @@
                                   <tr>
                                     <td>
                                       <div style="padding: 5px;">
-                              <label style="float: right;" for="form-field-8">Company : </label>
+                              <label style="float: right;" for="form-field-8"> <?php if($record->NoExperience == 'No Experience') echo "No Experience at all"; ?></label>
+                                    </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <div style="padding: 5px;">
+                              <label style="float: right;" for="form-field-8"><?php if($record->Company != Null) echo "</del> Company : </del> "; ?></label>
                                     </div>
                                     </td>
                                      <td>
@@ -483,7 +490,7 @@
                                   <tr>
                                     <td>
                                       <div style="padding: 5px;">
-                              <label style="float: right;" for="form-field-8">Position/Job : </label>
+                              <label style="float: right;" for="form-field-8"><?php if($record->Job != Null) echo "</del> Position/Job : </del> "; ?> </label>
                                     </div>
                                     </td>
                                      <td>
@@ -493,7 +500,7 @@
                                   <tr>
                                     <td>
                                       <div style="padding: 5px;">
-                              <label style="float: right;" for="form-field-8">Duration : </label>
+                              <label style="float: right;" for="form-field-8"><?php if($record->Duration != Null) echo "</del> Duration : </del> "; ?> </label>
                                     </div>
                                     </td>
                                      <td>

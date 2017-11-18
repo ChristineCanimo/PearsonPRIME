@@ -229,7 +229,7 @@
 								<!-- PAGE CONTENT BEGINS -->
 <?php  
  $connect = mysqli_connect("localhost", "root", "", "login");  
- $query ="SELECT * FROM `interview` WHERE `Status` = 'Pending'";  
+ $query ="SELECT * FROM `interview` WHERE `Status` = 'For Initial'";  
  $result = mysqli_query($connect, $query);  
  ?>  
 
@@ -265,12 +265,10 @@
 													    <th>Firstname</th>
 														<th class="hidden-480">Lastname</th>
 
-														<th>
-															<i class="ace-icon fa fa-file-o bigger-110 hidden-480"></i>
-															Email
+														<th class="hidden-480">											Age
 														</th>
 														<th class="hidden-480">Gender</th>
-                                                        <th>Contact Information</th>
+                                                        <th>Course</th>
 														<th>Interview Status</th>
 													
 
@@ -285,13 +283,15 @@
 													echo '
 													<tr>
 														<td class="center">
-															<form action="getdata" method="post">
+															<form action="getdatafrmtable" method="post">
 															<input type="hidden" value="'.$row["ApplicantNumber"].'" name="ApplicantNumber">
 															<input type="submit" style="border:none; background:none; color:blue" value="'.$row["FirstName"].'">
 															</form>
 														</td>
 														<td>'.$row["LastName"].'</td>
-														<td>'.$row["Email"].'</td>
+														<?php $age = date("Y") - date("Y", strtotime('.$row["Birthday"].')); ?>
+														<td> echo '.$age.';
+														</td>
 														<td class="hidden-480">'.$row["Gender"].'</td>
 														<td>'.$row["Contact"].'</td>
 														<td>'.$row["Status"].'</td>
@@ -348,10 +348,10 @@
 												<?php
 												while($row=mysqli_fetch_array($result))
 												{
-													echo '
+													echo ' 
 													<tr>
 														<td class="center">
-															<form action="second" method="post">
+															<form action="second1" method="post">
 															<input type="hidden" value="'.$row["ApplicantNumber"].'" name="ApplicantNumber">
 															<input type="submit" style="border:none; background:none; color:blue" value="'.$row["ApplicantName"].'">
 															</form>

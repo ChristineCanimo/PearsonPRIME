@@ -38,7 +38,7 @@
 		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
 		<![endif]-->
 
-		<!-- inline styles related to this page -->
+		 <!-- inline styles related to this page -->
 
 		<!-- ace settings handler -->
 		<script src="<?php echo base_url()?>interviewassets/js/ace-extra.min.js"></script>
@@ -106,7 +106,7 @@
                 <li class="divider"></li>
 
                 <li>
-                  <a href="logout">
+                  <a href="<?php echo base_url(); ?>index.php/Login/logout">
                     <i class="ace-icon fa fa-power-off"></i>
                     Logout
                   </a>

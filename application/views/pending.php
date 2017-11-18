@@ -239,7 +239,7 @@
 											<div class="pull-right tableTools-container"></div>
 										</div>
 										<div class="table-header">
-											Applicants to be hired
+											Applicants passed the interview (To be hired)
 										</div>
 
 										<!-- div.table-responsive -->
