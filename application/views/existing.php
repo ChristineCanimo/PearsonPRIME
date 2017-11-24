@@ -64,6 +64,8 @@
 						</small>
 					</a>
 				</div>
+
+
 <div class="navbar-buttons navbar-header pull-right" role="navigation">
           <ul class="nav ace-nav">
 
@@ -73,6 +75,7 @@
                 <i class="fa fa-users nav-user-photo"></i>
                 <span class="user-info">
                   <small>Welcome,</small>
+                  
                   <?php foreach($logs as $log){?>
                     <?php echo $log->First;?> <?php echo $log->Last;?><?php }?>
                 </span>
@@ -173,7 +176,7 @@
 
           </li>
 
-          <li class="">
+          <li class="active open">
             <a href="<?php echo base_url(); ?>index.php/recordmanagement/" class="dropdown-toggle">
               <i class="menu-icon fa fa-list"></i>
               <span class="menu-text"> For Interviews </span>
@@ -182,7 +185,7 @@
 
           </li>
 
-          <li class="active open">
+          <li class="">
             <a href="<?php echo base_url(); ?>index.php/openforms/pending" class="dropdown-toggle">
               <i class="menu-icon 	fa fa-list-alt"></i>
               <span class="menu-text"> Pending Applicants </span>
@@ -209,11 +212,6 @@
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="homepage">Home</a>
 							</li>
-
-							<li>
-								Employee Records
-							</li>
-							<li class="active">Record Managment</li>
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -227,19 +225,26 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
+ 
+								<div class="row">
+									<div class="col-xs-12">
+									   
+										<div class="page-header">
+							              <h1>
+							                Matched Profiles
+							                <small>
+							                  <i class="ace-icon fa fa-angle-double-right"></i>
+							                  Select Person with the same informations
+							                </small>
+							              </h1>
+							            </div><!-- /.page-header -->
 
-
-<?php  
- $connect = mysqli_connect("localhost", "root", "", "login");  
- $query ="SELECT * FROM `pendingapplicants` JOIN referrals ON pendingapplicants.AssignedPosition = referrals.JobTitle WHERE Status = 'Pending'";  
- $result = mysqli_query($connect, $query);  
- ?>
-
-								<div class="clearfix">
+										<div class="clearfix">
 											<div class="pull-right tableTools-container"></div>
 										</div>
 										<div class="table-header">
-											Applicants passed the interview (To be hired)
+											Applicants for Initial Interview
+
 										</div>
 
 										<!-- div.table-responsive -->
@@ -250,50 +255,39 @@
 												<thead>
 													<tr>
 
-													    <th>Applicant</th>
-														<th class="hidden-480">Referred By</th>
+													    <th>First Name</th>
+														<th class="hidden-480">Middle Name</th>
 
-														<th>
-															<i class="ace-icon fa fa-file-o bigger-110 hidden-480"></i>
-															Job Title
+														<th class="hidden-480">								Last Name
 														</th>
-														<th class="hidden-480">Job Grade</th>
-                                                        <th>Department</th>
-														<th>Manager</th>
-													
-
+														<th class="hidden-480">Gender</th>
+                                                        <th>Date of Birth</th>
+														<th>Status</th>
+														<th>Action</th>
 													</tr>
 												</thead>
 
 
-												<tbody>
-												<?php
-												while($row=mysqli_fetch_array($result))
-												{
-													echo '
+												<tbody> 
+													<?php foreach($matches as $match){?>
 													<tr>
 														<td class="center">
-															<form action="getpending" method="post">
-															<input type="hidden" value="'.$row["ApplicantNumber"].'" name="ApplicantNumber">
-															<input type="submit" style="border:none; background:none; color:blue" value="'.$row["ApplicantName"].'">
-															</form>
+															<?php echo $match->FirstName;?>
 														</td>
-														<td>'.$row["ReferredBy"].'</td>
-														<td>'.$row["AssignedPosition"].'</td>
-														<td class="hidden-480">'.$row["Grade"].'</td>
-														<td>'.$row["DepartmentName"].'</td>
-														<td>'.$row["Manager"].'</td>
-
-                                                        
-													</tr>
-													';
-													} 	
-													?>	
+														<td><?php echo $match->MiddleName;?></td>
+														<td><?php echo $match->LastName;?></td>
+														<td class="hidden-480"><?php echo $match->Gender;?></td>
+														<td><?php echo $match->Birthday;?></td>
+														<td><?php echo $match->Status;?></td>
+                                                       	<td><a href="#">Select This Person</td>
+													</tr> <?php }?>
 												</tbody>
 											</table>
 										</div>
 									</div>
 								</div>
+
+
 
 								<div id="modal-table" class="modal fade" tabindex="-1">
 									<div class="modal-dialog">

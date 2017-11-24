@@ -75,6 +75,9 @@
                 <i class="fa fa-users nav-user-photo"></i>
                 <span class="user-info">
                   <small>Welcome,</small>
+                  
+                  <?php foreach($logs as $log){?>
+                    <?php echo $log->First;?> <?php echo $log->Last;?><?php }?>
                 </span>
 
                 <i class="ace-icon fa fa-caret-down"></i>
@@ -229,10 +232,10 @@
 								<!-- PAGE CONTENT BEGINS -->
 <?php  
  $connect = mysqli_connect("localhost", "root", "", "login");  
- $query ="SELECT * FROM `interview` WHERE `Status` = 'For Initial'";  
+ $query ="SELECT * FROM `interview` JOIN `educinfo` ON Interview.ApplicantNumber=educinfo.ApplicantNumber WHERE interview.Status = 'For Initial'";  
  $result = mysqli_query($connect, $query);  
  ?>  
-
+ 
 								<div class="row">
 									<div class="col-xs-12">
 									   
@@ -262,10 +265,10 @@
 												<thead>
 													<tr>
 
-													    <th>Firstname</th>
-														<th class="hidden-480">Lastname</th>
+													    <th>Name</th>
+														<th class="hidden-480">Desired Job</th>
 
-														<th class="hidden-480">											Age
+														<th class="hidden-480">									Age
 														</th>
 														<th class="hidden-480">Gender</th>
                                                         <th>Course</th>
@@ -277,6 +280,7 @@
 
 
 												<tbody>
+													
 												<?php
 												while($row=mysqli_fetch_array($result))
 												{
@@ -285,22 +289,19 @@
 														<td class="center">
 															<form action="getdatafrmtable" method="post">
 															<input type="hidden" value="'.$row["ApplicantNumber"].'" name="ApplicantNumber">
-															<input type="submit" style="border:none; background:none; color:blue" value="'.$row["FirstName"].'">
+															<input type="submit" style="border:none; background:none; color:blue" value="'.$row["FirstName"].' '.$row["LastName"].'">
 															</form>
 														</td>
-														<td>'.$row["LastName"].'</td>
-														<?php $age = date("Y") - date("Y", strtotime('.$row["Birthday"].')); ?>
-														<td> echo '.$age.';
-														</td>
+														<td>'.$row["Desired"].'</td>
+														<td>age dito</td>
 														<td class="hidden-480">'.$row["Gender"].'</td>
-														<td>'.$row["Contact"].'</td>
+														<td>'.$row["Tdegree"].'</td>
 														<td>'.$row["Status"].'</td>
-
-                                                        
-													</tr>
 													';
 													} 	
 													?>	
+                                                       	
+													</tr>
 												</tbody>
 											</table>
 										</div>

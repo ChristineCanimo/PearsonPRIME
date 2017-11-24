@@ -8,6 +8,7 @@ class RecordManagement extends CI_Controller
       parent::__construct();
       
     	$this->load->model('record_model');
+    	$this->load->model('interview_model');
 
     }
 
@@ -17,8 +18,9 @@ class RecordManagement extends CI_Controller
 		if($li == TRUE){
 
 		$this->data['logs'] = $this->record_model->logged_in();
+		$this->data['ages'] = $this->record_model->age();
     	$id = $this->session->userdata('PersonNumber');
-    	$this->load->view('v_recordmanagement');
+    	$this->load->view('v_recordmanagement', $this->data);
     	}
     	else {
     		redirect('walangli');

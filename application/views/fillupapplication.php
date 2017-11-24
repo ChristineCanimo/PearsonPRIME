@@ -81,9 +81,8 @@
                 
                 <i class="fa fa-users nav-user-photo"></i>
                 <span class="user-info">
-                  <small>Welcome,</small>
                   <?php foreach($logs as $log){?>
-                    <?php echo $log->Name;?><?php }?>
+                    <?php echo $log->First;?> <?php echo $log->Last;?><?php }?>
                 </span>
 
                 <i class="ace-icon fa fa-caret-down"></i>
@@ -406,7 +405,7 @@
                           <select class="chosen-select form-control" name="Employee" id="form-field-1" data-placeholder="Employee Name">
                                 <option></option>
                                 <?php foreach($taos as $tao){?>
-                                <option value="<?php echo $tao->Name;?>"><?php echo $tao->Name;?></option>
+                                <option value="<?php echo $tao->First;?> <?php echo $tao->Last;?>"><?php echo $tao->First;?> <?php echo $tao->Last;?></option>
                                 <?php }?>
                           </select>
                          </div>     

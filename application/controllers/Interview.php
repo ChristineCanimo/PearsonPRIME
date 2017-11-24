@@ -61,6 +61,14 @@ class Interview extends CI_Controller {
 	}
 
 	public function fillupinfo(){
+
+		// Check validation for user input in SignUp form
+	$this->form_validation->set_rules('FirstName', 'First Name', 'trim|required|is_unique[interview.FirstName]');
+	$this->form_validation->set_rules('MiddleName', 'Middle Name', 'trim|required|is_unique[interview.MiddleName]');
+	$this->form_validation->set_rules('LastName', 'Last Name', 'trim|required|is_unique[interview.LastName]');
+	$this->form_validation->set_rules('Birthday', 'Date of Birth', 'trim|required|is_unique[interview.Birthday]');
+	if ($this->form_validation->run() == TRUE) {
+
 		$this->load->model('interview_model');
 			
 			if($this->input->post()) {
@@ -78,9 +86,22 @@ class Interview extends CI_Controller {
 					);
 					$this->session->set_userdata($new);
 					redirect('Interview/fillupeduc');
+			}
 		}
 	}
-}
+			else {
+
+				if($this->input->post()) {
+
+				$data = $this->input->post();	
+
+				$this->data['matches'] = $this->interview_model->match($data);
+				$this->data['logs'] = $this->record_model->logged_in();
+    			$this->load->view('existing', $this->data);
+			}
+		}
+	}
+ 
 
 	// Logout from admin page
 	public function cancel() {

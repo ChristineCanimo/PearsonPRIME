@@ -87,6 +87,10 @@ class record_model extends CI_Model {
         $this->db->from('initialresult');
         $this->db->where('initialresult.ApplicantNumber', $id);
 
+
+        $this->db->from('initialresult');
+        $this->db->where('initialresult.ApplicantNumber', $id);
+
         $this->db->from('employees');
         $this->db->where('PersonNumber', $li);
 
@@ -260,6 +264,12 @@ class record_model extends CI_Model {
     function cntinter(){
     date_default_timezone_set("Asia/Manila");
         $query = $this->db->query('SELECT count(Status) as cntinter FROM interview where status = "For initial"');
+        return $query->result();
+    }
+
+    function age(){
+    date_default_timezone_set("Asia/Manila");
+        $query = $this->db->query("SELECT (DATEDIFF(CURRENT_DATE, STR_TO_DATE(Birthday, '%Y-%m-%d'))/365) as age FROM `interview`");
         return $query->result();
     }
 }

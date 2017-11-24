@@ -81,7 +81,7 @@
                 <span class="user-info">
                   <small>Welcome,</small>
                   <?php foreach($logs as $log){?>
-                  	<?php echo $log->Name;?><?php }?>
+                    <?php echo $log->First;?> <?php echo $log->Last;?><?php }?>
                 </span>
 
                 <i class="ace-icon fa fa-caret-down"></i>
@@ -566,9 +566,9 @@
                               <label style="float: right;" for="form-field-9">Interviewer : </label>
                             </div>
                                   </td>
-                                	<input type="hidden" value="<?php echo $record->Name;?>" name="Interviewer">
+                                	<input type="hidden" value="<?php echo $record->First;?> <?php echo $record->Last;?>" name="Interviewer">
                                   <td>
-                                      <?php echo $record->Name;?>
+                                      <?php echo $record->First;?> <?php echo $record->Last;?>
                                     </td>
                                 </tr>
                                 <tr>

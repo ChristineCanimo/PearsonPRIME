@@ -83,7 +83,7 @@
                 <span class="user-info">
                   <small>Welcome,</small>
                   <?php foreach($logs as $log){?>
-                  	<?php echo $log->Name;?><?php }?>
+                  	<?php echo $log->First;?> <?php echo $log->Middle;?> <?php echo $log->Last;?><?php }?>
                 </span>
 
                 <i class="ace-icon fa fa-caret-down"></i>
@@ -314,8 +314,8 @@
                     Pearson HR
                     <small>(v1.4)</small>
                   </strong>,
-  <?php foreach($logs as $log){?>
-                    <?php echo $log->Name;?><?php }?>
+                  <?php foreach($logs as $log){?>
+                    <?php echo $log->First;?> <?php echo $log->Last;?><?php }?>
                 </div>
 
                 <div class="row">

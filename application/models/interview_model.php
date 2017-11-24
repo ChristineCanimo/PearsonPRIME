@@ -13,6 +13,25 @@ class interview_model extends CI_Model {
         return true;
     }
 
+    public function match($data){
+        date_default_timezone_set("Asia/Manila");   
+        $fn = $this->input->post('FirstName');  
+        $mn = $this->input->post('MiddleName');  
+        $ln = $this->input->post('LastName');  
+        $bd = $this->input->post('Birthday');
+
+        $this->db->from('interview');
+        $this->db->like('FirstName', $fn);
+        $this->db->or_like('MiddleName', $mn);
+        $this->db->or_like('LastName', $ln);
+        $this->db->or_like('Birthday', $bd);
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    
+
     public function inserteduc($data){
         date_default_timezone_set("Asia/Manila");   
         $this->db->insert('educinfo', $data);

@@ -82,7 +82,7 @@
                 <span class="user-info">
                   <small>Welcome,</small>
                   <?php foreach($logs as $log){?>
-                  	<?php echo $log->Name;?><?php }?>
+                    <?php echo $log->First;?> <?php echo $log->Last;?><?php }?>
                 </span>
 
                 <i class="ace-icon fa fa-caret-down"></i>

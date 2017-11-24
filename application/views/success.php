@@ -82,7 +82,7 @@
                 <span class="user-info">
                   <small>Welcome,</small>
                   <?php foreach($logs as $log){?>
-                    <?php echo $log->Name;?><?php }?>
+                    <?php echo $log->First;?> <?php echo $log->Last;?><?php }?>
                 </span>
 
                 <i class="ace-icon fa fa-caret-down"></i>
@@ -307,8 +307,9 @@
                   <h2 class=" bold lighter blue">
                     Success!
                   </h2>
-							<?php foreach($logs as $log){?>
-                  	<h3>Hi <?php echo $log->Name;?><?php }?><br><br>
+                  <?php foreach($logs as $log){?>
+                  <h3> Hi
+                    <?php echo $log->First;?> <?php echo $log->Last;?><?php }?><br><br>
                   		<center>
                   	You have successfully submitted the application of the new applicant.</h3>
                       </center>
