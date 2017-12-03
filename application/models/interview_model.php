@@ -26,10 +26,25 @@ class interview_model extends CI_Model {
         $this->db->or_like('LastName', $ln);
         $this->db->or_like('Birthday', $bd);
 
+
         $query = $this->db->get();
         return $query->result();
     }
 
+    public function selectmatch($data){
+        date_default_timezone_set("Asia/Manila");   
+        $fn = $this->input->post('FirstName'); 
+        $an = $this->input->post('ApplicantNumber');  
+        $mn = $this->input->post('MiddleName');  
+        $ln = $this->input->post('LastName');  
+        $bd = $this->input->post('Birthday');
+
+        $this->db->from('interview');
+        $this->db->where('ApplicantNumber', $an);
+
+        $query = $this->db->get();
+        return $query->result();
+    }
     
 
     public function inserteduc($data){
@@ -58,6 +73,21 @@ class interview_model extends CI_Model {
         return $query->result();
     }
 
+    public function getm(){
+        $an = $this->input->post('ApplicantNumber');
+        $this->db->from('interview'); 
+        $this->db->where('ApplicantNumber', $an);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function get_am(){
+        $an = $this->input->post('ApplicantNumber');
+        $this->db->from('prevemploy');
+        $this->db->where('ApplicantNumber', $an);
+        $query = $this->db->get();
+        return $query->result();
+
+    }
     public function get_pending(){
         $this->db->from('initial');
         $this->db->join('interview','initial.ApplicantNumber=interview.ApplicantNumber');
@@ -120,18 +150,7 @@ class interview_model extends CI_Model {
             'Tdegree' => $this->input->post('Tdegree'),
             'Tfrom' => $this->input->post('Tfrom'),
             'Tto' => $this->input->post('Tto'),
-            'Tgraduated' => $this->input->post('Tgraduated'),
-            'Sschool' => $this->input->post('Sschool'),
-            'Sfrom' => $this->input->post('Sfrom'),
-            'Sto' => $this->input->post('Sto'),
-            'Sgraduated' => $this->input->post('Sgraduated'),
-            'Pschool' => $this->input->post('Pschool'),
-            'Pfrom' => $this->input->post('Pfrom'),
-            'Pto' => $this->input->post('Pto'),
-            'Pgraduated' => $this->input->post('Pgraduated'),
-            'Company' => $this->input->post('company'),
-            'Position' => $this->input->post('position'),
-            'Duration' => $this->input->post('duration')
+            'Tgraduated' => $this->input->post('Tgraduated')
                 );  
 
         $this->db->where('ApplicantNumber', $id);
@@ -164,7 +183,7 @@ class interview_model extends CI_Model {
                 'ApplicantNumber' => $id, 
                 'Desired' => $this->input->post('PositionDesired'), 
                 'Referred' => $this->input->post('Referred'), 
-                'Employee' => $this->input->post('Employee'), 
+                'Employee' => $this->input->post('Employee'),
                 
             );
             
@@ -174,14 +193,13 @@ class interview_model extends CI_Model {
 
             $this->db->where('ApplicantNumber', $id);
             $this->db->set($apply);
-            $this->db->update('application');    
+            $this->db->update('interview');    
         }
 
     public function get_application(){
         $this->db->from('prevemploy');
-        $this->db->join('application', 'application.ApplicantNumber = prevemploy.ApplicantNumber');
         $this->db->limit(1);
-        $this->db->order_by('prevemploy.ApplicantNumber', 'DESC');
+        $this->db->order_by('ApplicantNumber', 'DESC');
         $query = $this->db->get();
         return $query->result();
 

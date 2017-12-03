@@ -273,7 +273,7 @@
                           echo '
                           <tr>
                             <td class="center">
-                              <form action="second" method="post">
+                              <form action="getpending" method="post">
                               <input type="hidden" value="'.$row["ApplicantNumber"].'" name="ApplicantNumber">
                               <input type="submit" style="border:none; background:none; color:blue" value="'.$row["ApplicantName"].'">
                               </form>

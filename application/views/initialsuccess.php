@@ -307,7 +307,7 @@
                     Success!
                   </h2>
 							<?php foreach($logs as $log){?>
-                  	<h3>Hi <?php echo $log->Name;?><?php }?><br><br>
+                  	<h3>Hi <?php echo $log->First;?> <?php echo $log->Last;?><?php }?><br><br>
                   		<center>
                   	You have successfully submitted the results for the initial interview of the applicant.</h3>
                       </center>

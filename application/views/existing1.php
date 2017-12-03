@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
-    <title>Education Information</title>
+    <title>Personal Information</title>
 
     <meta name="description" content="Common form elements and layouts" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/css/daterangepicker.min.css" />
     <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/css/bootstrap-datetimepicker.min.css" />
     <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/css/bootstrap-colorpicker.min.css" />
-        
+        <link rel="stylesheet" href="<?php echo base_url()?>assetsko/css/interview.css">
 
     <!-- text fonts -->
     <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/css/fonts.googleapis.com.css" />
@@ -34,19 +34,18 @@
     <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/css/ace-skins.min.css" />
     <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/css/ace-rtl.min.css" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    $("#addprevemploy").click(function(){
-        $("fieldset").append($("#hays").html());
-    });
-});
-</script>
+    <!--[if lte IE 9]>
+      <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+    <![endif]-->
 
+     <!-- inline styles related to this page -->
+
+    <!-- ace settings handler -->
     <script src="<?php echo base_url()?>interviewassets/js/ace-extra.min.js"></script>
-<style type="text/css">
-  .hidden {
-    display: none;
+
+  <style>
+  .modal1 {
+  display:block;
 }
 </style>
   </head>
@@ -72,8 +71,7 @@ $(document).ready(function(){
             </small>
           </a>
         </div>
-
-       <div class="navbar-buttons navbar-header pull-right" role="navigation">
+<div class="navbar-buttons navbar-header pull-right" role="navigation">
           <ul class="nav ace-nav">
 
             <li class="light-blue dropdown-modal">
@@ -107,7 +105,7 @@ $(document).ready(function(){
                 <li class="divider"></li>
 
                 <li>
-                  <a href="logout">
+                  <a href="<?php echo base_url(); ?>index.php/Login/logout">
                     <i class="ace-icon fa fa-power-off"></i>
                     Logout
                   </a>
@@ -118,6 +116,7 @@ $(document).ready(function(){
         </div>
       </div><!-- /.navbar-container -->
     </div>
+
 
     <div class="main-container ace-save-state" id="main-container">
       <script type="text/javascript">
@@ -149,7 +148,6 @@ $(document).ready(function(){
           </div>
 
         </div><!-- /.sidebar-shortcuts -->
-
 
         <ul class="nav nav-list">
           <li class="">
@@ -188,11 +186,12 @@ $(document).ready(function(){
 
             </a>
 
-          </li>          
+          </li>   
+
+          
             </ul>
           </li>
         </ul><!-- /.nav-list -->
-          
 
         <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
           <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
@@ -298,7 +297,7 @@ $(document).ready(function(){
                 New Applicant Form
                 <small>
                   <i class="ace-icon fa fa-angle-double-right"></i>
-                  Step 3 of 3: Please enter your Employment information
+                  Step 1 of 3: Please enter your personal info
                 </small>
               </h1>
             </div><!-- /.page-header -->
@@ -306,124 +305,92 @@ $(document).ready(function(){
             <div class="row">
               <div class="col-xs-12">
                 <!-- PAGE CONTENT BEGINS -->
+                
                 <ul id="progressbar">
-                <form class="form-horizontal" action="<?php echo base_url(); ?>index.php/Interview/insertapplication" method="post">
-
-                  <h4 class="smaller lighter blue">
-                    Previous Employment
-                  </h4>
-                  
-                  <fieldset id="hays">     
-                      <?php foreach($infos as $info){?>
-                  <input type="hidden" class="col-sm-3 control-label no-padding-right" placeholder="Enter First Name" name="ApplicantNumber" value="<?php echo $info->ApplicantNumber;?>"/>
-                   <?php }?> 
+                <form class="form-horizontal" action="<?php echo base_url(); ?>index.php/Interview/fillupinfo" method="post">
                   <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Company </label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> First Name </label>
 
                     <div class="col-sm-9">
-                      <input type="text" id="form-field-1" placeholder="Company" name="Company" class="col-xs-10 col-sm-5" />
+                      <input type="text" id="form-field-1" placeholder="First Name" name="FirstName" class="col-xs-10 col-sm-5" required/>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Job </label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Middle Name </label>
 
                     <div class="col-sm-9">
-                      <input type="text" id="form-field-1" placeholder="Job" name="Job" class="col-xs-10 col-sm-5" />
+                      <input type="text" id="form-field-1" placeholder="Middle Name" name="MiddleName" class="col-xs-10 col-sm-5" required/>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Duration </label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Last Name </label>
 
                     <div class="col-sm-9">
-                      <input type="text" id="form-field-1" placeholder="For how long?" name="Duration" class="col-xs-10 col-sm-5" />
-                    </div>
-                  </div>
-                </fieldset>
-
-                  <div class="form-group">
-                  <div class="checkbox">
-                          <label class="col-sm-3 control-label no-padding-right" for="form-field-1">
-                            <input type="checkbox" name="NoExperience" value="No Experience" />
-                            <span class="lbl">No Work Experience at all</span>
-                          </label>
+                      <input type="text" id="form-field-1" placeholder="Last Name" name="LastName" class="col-xs-10 col-sm-5" required/>
                     </div>
                   </div>
 
-                       <div class="form-group">
-                    <p>
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 
-                      <input type="button" value="Add Another" id="addprevemploy">
-                    </label>
-                    </p>                  </div>
-
-
-                  <div class="hr hr-24"></div>
-
-                  <h4 class="smaller lighter blue">
-                    Application Information
-                  </h4>
-
                   <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Position Desired </label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Address Line </label>
 
                     <div class="col-sm-9">
-                      <input type="text" id="form-field-1" placeholder="Position Desired" name="PositionDesired" class="col-xs-10 col-sm-5" />
+                      <input type="text" id="form-field-1" placeholder="House No, Street, Barangay" name="AddressLine" class="col-xs-10 col-sm-5" required/>
                     </div>
                   </div>
 
-
                   <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Referred?</label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> City Address </label>
 
-                    <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-                      <div class="control-group">
-                        <div class="radio">
-                          <label>
-                            <input onclick="pass()" id="yesCheck" name="Referred" value="1" type="radio" class="ace" />
-                            <span class="lbl"> Yes</span>
-                          </label>
-                        </div>
-
-                        <div class="radio">
-                          <label>
-                            <input onclick="fail()" id="noCheck" name="Referred" value="0" type="radio" class="ace" />
-                            <span class="lbl"> No</span>
-                          </label>
-                        </div>
-                      </div>
+                    <div class="col-sm-9">
+                      <input type="text" id="form-field-1" placeholder="City" name="City" class="col-xs-10 col-sm-5" required/>
                     </div>
-                  </div><!-- /.row -->
-
                   </div>
 
-                  <section id="mypass" form="msform" style="display: none;">
                   <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Email Address </label>
 
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Which Employee?</label>
-
-                          <div class="col-sm-9">
-                    
-                          <select class="chosen-select form-control" name="Employee" id="form-field-1" data-placeholder="Employee Name">
-                                <option></option>
-                                <?php foreach($taos as $tao){?>
-                                <option value="<?php echo $tao->First;?> <?php echo $tao->Last;?>"><?php echo $tao->First;?> <?php echo $tao->Last;?></option>
-                                <?php }?>
-                          </select>
-                         </div>     
+                    <div class="col-sm-9">
+                      <input type="email" id="form-field-1" placeholder="Email Address" name="Email" class="col-xs-10 col-sm-5" required/>
                     </div>
-                  </section>
-                              <input type="hidden" name="date_added" value="<?php date_default_timezone_set("Asia/Manila"); echo date("Y/m/d h:i:sa") ?>">
-                              <input type="hidden" name="Status" value="For initial">
+                  </div>
+
+                  <div class="form-group">
+                              <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Gender</label>
+                              <div class="col-sm-9">
+                              <select name="Gender" id="form-field-1"> &nbsp;&nbsp;
+                                <option id="form-field-1" value="" name="gender" required=""></option>
+                                <option id="form-field-1" value="Male" name="gender" required="">Male</option>
+                                <option id="form-field-1" value="Female" name="gender" required="">Female</option>
+                              </select>
+                            </div>
+                            </div>
+
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Contact Number </label>
+
+                    <div class="col-sm-9">
+                      <input type="tel" id="form-field-1" placeholder="Contact" name="Contact" class="col-xs-10 col-sm-5" required/>
+                    </div>
+                  </div>
+
+                            <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Date of Birth:</label>
+                    <div class="col-sm-9">
+                              <input type="date" class="col-xs-10 col-sm-5" placeholder="Enter Birthday" name="Birthday" required/>
+                            </div>
+                            </div>
+
+                  <input type="hidden" class="col-sm-3 control-label no-padding-right" placeholder="Enter First Name" name="ApplicantNumber" value=""/>
+
+                              <input type="hidden" name="Date_added" value="<?php date_default_timezone_set("Asia/Manila"); echo date("Y/m/d h:i:sa") ?>">
           <br>
                             
 
                   <div class="clearfix form-actions">
                     <div class="col-md-offset-3 col-md-9">
-                      <a href="" class="btn btn-info" data-toggle="modal" data-target="#goback">
-                        <i class="ace-icon fa fa-arrow-left bigger-110"></i>Previous</a>
+                                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#cancel"><i class="ace-icon fa fa-times bigger-110"></i>Cancel</a>
 
                       &nbsp; &nbsp; &nbsp;
                       <button class="btn" type="reset">
@@ -432,18 +399,15 @@ $(document).ready(function(){
                       </button>
 
                       &nbsp; &nbsp; &nbsp;
-                      <a href="" class="btn btn-primary" data-toggle="modal" data-target="#cancel"><i class="ace-icon fa fa-times bigger-110"></i>Cancel</a>
-
-                      &nbsp; &nbsp; &nbsp;
                       <button class="btn btn-info" type="submit">
                         <i class="ace-icon fa fa-arrow-right bigger-110"></i>
                         Next
                       </button>
                       
-                      </form>
+                      
                     </div>
                   </div>
-
+                </form>
                 </div><!-- PAGE CONTENT ENDS -->
               </div><!-- /.col -->
             </div><!-- /.row -->
@@ -451,30 +415,85 @@ $(document).ready(function(){
         </div>
       </div><!-- /.main-content -->
 
-
-        <div class="modal" id="goback" role="dialog">
+      <div class="modal in" id="goback" role="dialog">
     <div class="modal-dialog">
 
        <!-- Modal content-->
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" style="color: red">Warning</h4>
-        </div>
+        <div class="page-content">
+            <!--/ .can add other functions here-->
 
-        <div class="modal-body">
-          Are you sure you want to go back without submitting the form? You might lose the data you entered.
-        </div>
-        <div class="modal-footer">
-          <a href="<?php echo base_url(); ?>index.php/Interview/backeduc" class="btn btn-primary">Yes</a>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-        </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+ 
+                <div class="row">
+                  <div class="col-xs-12">
+                     
+                    <div class="page-header">
+                            <h1>
+                              Matched Profiles
+                              <small>
+                                <i class="ace-icon fa fa-angle-double-right"></i>
+                                Select Person with the same informations
+                              </small>
+                            </h1>
+                          </div><!-- /.page-header -->
+
+                    <div class="clearfix">
+                      <div class="pull-right tableTools-container"></div>
+                    </div>
+                    <div class="table-header">
+                      Applicants for Initial Interview
+
+                    </div>
+
+                    <!-- div.table-responsive -->
+
+                    <!-- div.dataTables_borderWrap -->
+                    <div>
+                      <table id="dynamic-table" class="table table-striped table-bordered table-hover" style="overflow:auto" autocomplete="on">
+                        <thead>
+                          <tr>
+
+                              <th>First Name</th>
+                            <th class="hidden-480">Middle Name</th>
+
+                            <th class="hidden-480">               Last Name
+                            </th>
+                            <th class="hidden-480">Gender</th>
+                                                        <th>Date of Birth</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+
+
+                        <tbody> 
+                          <?php foreach($matches as $match){?>
+                          <tr>
+                            <td class="center">
+                              <?php echo $match->FirstName;?>
+                            </td>
+                            <td><?php echo $match->MiddleName;?></td>
+                            <td><?php echo $match->LastName;?></td>
+                            <td class="hidden-480"><?php echo $match->Gender;?></td>
+                            <td><?php echo $match->Birthday;?></td>
+                            <td><?php echo $match->Status;?></td>
+                                                        <td><a href="#">Select This Person</td>
+                          </tr> <?php }?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
       </div>
     </div>
   </div>
 
 
-        <div class="modal" id="cancel" role="dialog">
+      <div class="modal" id="cancel" role="dialog">
     <div class="modal-dialog">
 
        <!-- Modal content-->
@@ -510,23 +529,6 @@ $(document).ready(function(){
 
     <!-- basic scripts -->
 
-    <script>
-        function pass() {
-            var x = document.getElementById("mypass");
-            var y = document.getElementById("myfail");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            }
-        }
-
-        function fail() {
-            var x = document.getElementById("mypass");
-            var y = document.getElementById("myfail");
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            }
-        }
-        </script>
     <!--[if !IE]> -->
     <script src="<?php echo base_url()?>interviewassets/js/jquery-2.1.4.min.js"></script>
 

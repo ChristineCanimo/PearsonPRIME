@@ -101,8 +101,65 @@ class Interview extends CI_Controller {
 			}
 		}
 	}
- 
 
+	public function selectmatch(){
+		$this->load->model('interview_model');
+			
+			
+			if($this->input->post()) {
+			$data = $this->input->post();
+
+			$result = $this->interview_model->selectmatch($data);
+
+			$li = $this->session->userdata('filled_up');
+			$id = $this->session->userdata('ApplicantNumber');
+			$this->data['infos'] = $this->interview_model->getm();
+			$this->data['personals'] = $this->interview_model->getm();
+			$this->data['applies'] = $this->interview_model->get_am();
+			$this->data['logs'] = $this->record_model->logged_in();
+			$this->data['taos'] = $this->interview_model->get_employees();
+			$this->load->view('appmatch', $this->data);
+		}
+	}
+
+	public function prevappmatch() {
+		$li = $this->session->userdata('logged_in');
+		$fu = $this->session->userdata('filled_up');
+
+		if($fu != TRUE){
+		$this->data['logs'] = $this->record_model->logged_in();
+		$this->data['infos'] = $this->interview_model->get_info();
+		$this->load->view('prevappmatch', $this->data);
+	}
+		else {
+			redirect ('Interview/');
+		}
+	}
+ 
+public function fillupinfo1(){
+
+
+		$this->load->model('interview_model');
+			
+			if($this->input->post()) {
+			$data = $this->input->post();	
+
+			$result = $this->interview_model->fillupinfo($data);
+			if(!$result) {
+					redirect ('index.php/Interview/index');
+				}
+				
+				else {
+					$new = array(
+			        'filled_up' => TRUE,
+			        'ApplicantNumber' => $result['0']['ApplicantNumber']
+					);
+					$this->session->set_userdata($new);
+					redirect('Interview/fillupeduc');
+			}
+		}
+	}
+	
 	// Logout from admin page
 	public function cancel() {
 
@@ -169,6 +226,9 @@ class Interview extends CI_Controller {
 		}
 	}
 
+	public function try1(){
+		$this->load->view('try1');
+	}
 	public function initial(){
 		$li = $this->session->userdata('logged_in');
 		$pn = $this->session->userdata('PersonNumber');
@@ -230,7 +290,7 @@ class Interview extends CI_Controller {
 			$this->session->unset_userdata('fillupinfo', $sess_array);
 			$data['message_display'] = 'Successfully Logout';
 
-			redirect('Interview/initial');
+			redirect('recordmanagement/success/'.$id);
 		}
 	}
 	

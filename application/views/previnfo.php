@@ -152,7 +152,7 @@
 				</div><!-- /.sidebar-shortcuts -->
 
         <ul class="nav nav-list">
-          <li class="active open">
+          <li class="">
             <a href="<?php echo base_url(); ?>index.php/openforms/">
               <i class="menu-icon fa fa-tachometer"></i>
               <span class="menu-text"> Dashboard </span>

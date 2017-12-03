@@ -283,7 +283,10 @@
 													
 												<?php
 												while($row=mysqli_fetch_array($result))
-												{
+												{	$bday= $row["Birthday"];
+													$birthDate = $bday;
+													$today = date_default_timezone_set("Asia/Manila"); 
+													$age = date("Y") - date("Y", strtotime($birthDate));
 													echo '
 													<tr>
 														<td class="center">
@@ -293,7 +296,7 @@
 															</form>
 														</td>
 														<td>'.$row["Desired"].'</td>
-														<td>age dito</td>
+														<td>'.$age.'</td>
 														<td class="hidden-480">'.$row["Gender"].'</td>
 														<td>'.$row["Tdegree"].'</td>
 														<td>'.$row["Status"].'</td>

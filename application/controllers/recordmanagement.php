@@ -91,7 +91,7 @@ class RecordManagement extends CI_Controller
 			$this->data['referrals'] = $this->record_model->referral();
 			$this->data['logs'] = $this->record_model->logged_in();
 			$this->data['depts'] = $this->record_model->get_dept();
-	    	$this->load->view('records', $this->data);
+	    	$this->load->view('recordsfrmtbl', $this->data);
     	}
     }
 
@@ -108,11 +108,6 @@ class RecordManagement extends CI_Controller
 	    	$this->load->view('records', $this->data);
     	}
     	
-	}
-
-	public function toinitial($id='')
-	{
-		redirect('recordmanagement/getdata/'.$id);
 	}
 
 	function insert_initial()

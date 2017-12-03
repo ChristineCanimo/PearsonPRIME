@@ -438,7 +438,7 @@
                               <?php foreach($employs as $employ){?>
 
                               <tr>
-                                <td><?php echo $employ->Name;?></td>
+                                <td><?php echo $employ->First;?> <?php echo $employ->Last;?></td>
 
                                 <td>
                                   <b class="blue"><?php echo $employ->PersonNumber;?></b>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
-    <title>Education Information</title>
+    <title>Employment Information</title>
 
     <meta name="description" content="Common form elements and layouts" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -34,21 +34,21 @@
     <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/css/ace-skins.min.css" />
     <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/css/ace-rtl.min.css" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    $("#addprevemploy").click(function(){
-        $("fieldset").append($("#hays").html());
-    });
-});
-</script>
+    <!--[if lte IE 9]>
+      <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+    <![endif]-->
 
+    <!-- inline styles related to this page -->
+
+    <!-- ace settings handler -->
     <script src="<?php echo base_url()?>interviewassets/js/ace-extra.min.js"></script>
-<style type="text/css">
-  .hidden {
-    display: none;
-}
-</style>
+
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+    <!--[if lte IE 8]>
+    <script src="assets/js/html5shiv.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
   </head>
 
   <body class="no-skin">
@@ -72,8 +72,7 @@ $(document).ready(function(){
             </small>
           </a>
         </div>
-
-       <div class="navbar-buttons navbar-header pull-right" role="navigation">
+<div class="navbar-buttons navbar-header pull-right" role="navigation">
           <ul class="nav ace-nav">
 
             <li class="light-blue dropdown-modal">
@@ -119,6 +118,7 @@ $(document).ready(function(){
       </div><!-- /.navbar-container -->
     </div>
 
+
     <div class="main-container ace-save-state" id="main-container">
       <script type="text/javascript">
         try{ace.settings.loadState('main-container')}catch(e){}
@@ -149,7 +149,6 @@ $(document).ready(function(){
           </div>
 
         </div><!-- /.sidebar-shortcuts -->
-
 
         <ul class="nav nav-list">
           <li class="">
@@ -188,11 +187,12 @@ $(document).ready(function(){
 
             </a>
 
-          </li>          
+          </li>   
+
+          
             </ul>
           </li>
         </ul><!-- /.nav-list -->
-          
 
         <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
           <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
@@ -307,21 +307,21 @@ $(document).ready(function(){
               <div class="col-xs-12">
                 <!-- PAGE CONTENT BEGINS -->
                 <ul id="progressbar">
-                <form class="form-horizontal" action="<?php echo base_url(); ?>index.php/Interview/insertapplication" method="post">
+                <form class="form-horizontal" action="<?php echo base_url(); ?>index.php/Interview/updateapplication" method="post">
 
                   <h4 class="smaller lighter blue">
                     Previous Employment
                   </h4>
-                  
-                  <fieldset id="hays">     
-                      <?php foreach($infos as $info){?>
+                    <?php foreach($applies as $apply){?>  
+                  <?php foreach($infos as $info){?>
+
                   <input type="hidden" class="col-sm-3 control-label no-padding-right" placeholder="Enter First Name" name="ApplicantNumber" value="<?php echo $info->ApplicantNumber;?>"/>
-                   <?php }?> 
-                  <div class="form-group">
+                   <?php }?>
+                    <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Company </label>
 
                     <div class="col-sm-9">
-                      <input type="text" id="form-field-1" placeholder="Company" name="Company" class="col-xs-10 col-sm-5" />
+                      <input type="text" id="form-field-1" placeholder="Company" name="Company" class="col-xs-10 col-sm-5" value="<?php echo $apply->Company;?>"/>
                     </div>
                   </div>
 
@@ -329,7 +329,7 @@ $(document).ready(function(){
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Job </label>
 
                     <div class="col-sm-9">
-                      <input type="text" id="form-field-1" placeholder="Job" name="Job" class="col-xs-10 col-sm-5" />
+                      <input type="text" id="form-field-1" placeholder="Job" name="Job" class="col-xs-10 col-sm-5" value="<?php echo $apply->Job;?>"/>
                     </div>
                   </div>
 
@@ -337,26 +337,21 @@ $(document).ready(function(){
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Duration </label>
 
                     <div class="col-sm-9">
-                      <input type="text" id="form-field-1" placeholder="For how long?" name="Duration" class="col-xs-10 col-sm-5" />
+                      <input type="text" id="form-field-1" placeholder="For how long?" name="Duration" class="col-xs-10 col-sm-5" value="<?php echo $apply->Duration;?>"/>
                     </div>
                   </div>
-                </fieldset>
-
                   <div class="form-group">
                   <div class="checkbox">
                           <label class="col-sm-3 control-label no-padding-right" for="form-field-1">
-                            <input type="checkbox" name="NoExperience" value="No Experience" />
+                            <input type="checkbox" name="NoExperience" value="No Experience" <?php if($apply->NoExperience == 'No Experience') echo " checked='checked' "; ?> />
                             <span class="lbl">No Work Experience at all</span>
                           </label>
                     </div>
                   </div>
-
-                       <div class="form-group">
-                    <p>
+                  <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 
-                      <input type="button" value="Add Another" id="addprevemploy">
-                    </label>
-                    </p>                  </div>
+                        <i class="ace-icon fa fa-plus bigger-210"></i> </label>
+                  </div>
 
 
                   <div class="hr hr-24"></div>
@@ -364,12 +359,12 @@ $(document).ready(function(){
                   <h4 class="smaller lighter blue">
                     Application Information
                   </h4>
-
+                  <?php foreach($infos as $info){?>
                   <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Position Desired </label>
 
                     <div class="col-sm-9">
-                      <input type="text" id="form-field-1" placeholder="Position Desired" name="PositionDesired" class="col-xs-10 col-sm-5" />
+                      <input type="text" id="form-field-1" placeholder="Position Desired" name="PositionDesired" class="col-xs-10 col-sm-5" value="<?php echo $info->Desired;?>"/>
                     </div>
                   </div>
 
@@ -382,14 +377,14 @@ $(document).ready(function(){
                       <div class="control-group">
                         <div class="radio">
                           <label>
-                            <input onclick="pass()" id="yesCheck" name="Referred" value="1" type="radio" class="ace" />
+                            <input onclick="pass()" id="yesCheck" name="Referred" value="1" type="radio" class="ace" <?php if($info->Referred == '1') echo " checked='checked' "; ?>/>
                             <span class="lbl"> Yes</span>
                           </label>
                         </div>
 
                         <div class="radio">
                           <label>
-                            <input onclick="fail()" id="noCheck" name="Referred" value="0" type="radio" class="ace" />
+                            <input onclick="fail()" id="noCheck" name="Referred" value="0" type="radio" class="ace" <?php if($info->Referred == '0') echo " checked='checked' "; ?> />
                             <span class="lbl"> No</span>
                           </label>
                         </div>
@@ -399,48 +394,38 @@ $(document).ready(function(){
 
                   </div>
 
-                  <section id="mypass" form="msform" style="display: none;">
+                  <section id="mypass" form="msform" style="<?php if($info->Referred == '0') echo " display: none; "; ?>">
                   <div class="form-group">
 
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Which Employee?</label>
 
                           <div class="col-sm-9">
                     
-                          <select class="chosen-select form-control" name="Employee" id="form-field-1" data-placeholder="Employee Name">
-                                <option></option>
+                          <select class="chosen-select form-control " name="Employee" id="form-field-1" data-placeholder="Employee Name" data-value="trewtre">fdgf
+                                <?php }?>
                                 <?php foreach($taos as $tao){?>
-                                <option value="<?php echo $tao->First;?> <?php echo $tao->Last;?>"><?php echo $tao->First;?> <?php echo $tao->Last;?></option>
+                                <option value="<?php echo $tao->First;?> <?php echo $tao->First;?>"><?php echo $tao->First;?> <?php echo $tao->First;?></option>
                                 <?php }?>
                           </select>
                          </div>     
                     </div>
                   </section>
-                              <input type="hidden" name="date_added" value="<?php date_default_timezone_set("Asia/Manila"); echo date("Y/m/d h:i:sa") ?>">
-                              <input type="hidden" name="Status" value="For initial">
+                              <input type="hidden" name="Date_added" value="<?php date_default_timezone_set("Asia/Manila"); echo date("Y/m/d h:i:sa") ?>">
           <br>
-                            
+                            <?php }?> 
 
                   <div class="clearfix form-actions">
                     <div class="col-md-offset-3 col-md-9">
-                      <a href="" class="btn btn-info" data-toggle="modal" data-target="#goback">
-                        <i class="ace-icon fa fa-arrow-left bigger-110"></i>Previous</a>
-
-                      &nbsp; &nbsp; &nbsp;
-                      <button class="btn" type="reset">
-                        <i class="ace-icon fa fa-undo bigger-110"></i>
-                        Reset
-                      </button>
-
                       &nbsp; &nbsp; &nbsp;
                       <a href="" class="btn btn-primary" data-toggle="modal" data-target="#cancel"><i class="ace-icon fa fa-times bigger-110"></i>Cancel</a>
 
                       &nbsp; &nbsp; &nbsp;
                       <button class="btn btn-info" type="submit">
                         <i class="ace-icon fa fa-arrow-right bigger-110"></i>
-                        Next
+                        Submit
                       </button>
                       
-                      </form>
+                      
                     </div>
                   </div>
 
@@ -487,11 +472,11 @@ $(document).ready(function(){
         <div class="modal-body">
           Are you sure you want to cancel all your progress? You might lose all the data you entered.
 
-          <form action="<?php echo base_url(); ?>index.php/Interview/cancel" method="post">
+          <form class="form-horizontal" action="<?php echo base_url(); ?><?php echo base_url(); ?>index.php/Interview/cancel" method="post">
 
             <?php foreach($infos as $info){?>
 
-                  <input type="text" class="col-sm-3 control-label no-padding-right" name="ApplicantNumber" value="<?php echo $info->ApplicantNumber;?>"/>
+                  <input type="hidden" class="col-sm-3 control-label no-padding-right" placeholder="Enter First Name" name="ApplicantNumber" value="<?php echo $info->ApplicantNumber;?>"/>
                    <?php }?> 
         </div>
         <div class="modal-footer">

@@ -87,10 +87,6 @@ class record_model extends CI_Model {
         $this->db->from('initialresult');
         $this->db->where('initialresult.ApplicantNumber', $id);
 
-
-        $this->db->from('initialresult');
-        $this->db->where('initialresult.ApplicantNumber', $id);
-
         $this->db->from('employees');
         $this->db->where('PersonNumber', $li);
 

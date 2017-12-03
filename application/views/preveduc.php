@@ -151,7 +151,7 @@
         </div><!-- /.sidebar-shortcuts -->
 
         <ul class="nav nav-list">
-          <li class="active open">
+          <li class="">
             <a href="<?php echo base_url(); ?>index.php/openforms/">
               <i class="menu-icon fa fa-tachometer"></i>
               <span class="menu-text"> Dashboard </span>
@@ -351,75 +351,6 @@
                             <span class="lbl">Graduated</span>
                           </label>
                     </div>
-
-                  <div class="hr hr-24"></div>
-
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Secondary </label>
-
-                    <div class="col-sm-9">
-                      <input type="text" id="form-field-1" placeholder="High School" name="Sschool" class="col-xs-10 col-sm-5" value="<?php echo $educ->Sschool;?>"/>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> From </label>
-
-                    <div class="col-sm-9">
-                      <input type="text" id="form-field-1" placeholder="Year" name="Sfrom" class="col-xs-10 col-sm-5" value="<?php echo $educ->Sfrom;?>"/>
-                    </div>
-                  </div>
-
-
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> To</label>
-
-                    <div class="col-sm-9">
-                      <input type="text" id="form-field-1" placeholder="Year" name="Sto" class="col-xs-10 col-sm-5" value="<?php echo $educ->Sto;?>"/>
-                    </div>
-                  </div>
-
-                  <div class="checkbox">
-                          <label class="col-sm-3 control-label no-padding-right" for="form-field-1">
-                            <input type="checkbox" name="Sgraduated" value="graduated" <?php if($educ->Tgraduated == 'graduated') echo " checked='checked' "; ?>/>
-                            <span class="lbl"> Graduated</span>
-                          </label>
-                    </div>
-
-                  <div class="hr hr-24"></div>
-
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Primary </label>
-
-                    <div class="col-sm-9">
-                      <input type="text" id="form-field-1" placeholder="Elementary School" name="Pschool" class="col-xs-10 col-sm-5" value="<?php echo $educ->Pschool;?>"/>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> From </label>
-
-                    <div class="col-sm-9">
-                      <input type="text" id="form-field-1" placeholder="Year" name="Pfrom" class="col-xs-10 col-sm-5" value="<?php echo $educ->Pfrom;?>"/>
-                    </div>
-                  </div>
-
-
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> To</label>
-
-                    <div class="col-sm-9">
-                      <input type="text" id="form-field-1" placeholder="Year" name="Pto" class="col-xs-10 col-sm-5" value="<?php echo $educ->Pto;?>"/>
-                    </div>
-                  </div>
-
-                  <div class="checkbox">
-                          <label class="col-sm-3 control-label no-padding-right" for="form-field-1">
-                            <input type="checkbox" name="Pgraduated" value="graduated" <?php if($educ->Tgraduated == 'graduated') echo " checked='checked' "; ?>/>
-                            <span class="lbl"> Graduated</span>
-                          </label>
-                    </div>
-
 
                               <input type="hidden" name="Date_added" value="<?php date_default_timezone_set("Asia/Manila"); echo date("Y/m/d h:i:sa") ?>">
           <br>

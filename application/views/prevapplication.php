@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
     <title>Education Information</title>
@@ -340,7 +340,14 @@
                       <input type="text" id="form-field-1" placeholder="For how long?" name="Duration" class="col-xs-10 col-sm-5" value="<?php echo $apply->Duration;?>"/>
                     </div>
                   </div>
-
+                  <div class="form-group">
+                  <div class="checkbox">
+                          <label class="col-sm-3 control-label no-padding-right" for="form-field-1">
+                            <input type="checkbox" name="NoExperience" value="No Experience" <?php if($apply->NoExperience == 'No Experience') echo " checked='checked' "; ?> />
+                            <span class="lbl">No Work Experience at all</span>
+                          </label>
+                    </div>
+                  </div>
                   <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 
                         <i class="ace-icon fa fa-plus bigger-210"></i> </label>
@@ -397,7 +404,7 @@
                           <select class="chosen-select form-control " name="Employee" id="form-field-1" data-placeholder="Employee Name" data-value="<?php echo $personal->Employee;?>"><?php echo $personal->Employee;?>
                                 <?php }?>
                                 <?php foreach($taos as $tao){?>
-                                <option value="<?php echo $tao->Name;?>"><?php echo $tao->Name;?></option>
+                                <option value="<?php echo $tao->First;?> <?php echo $tao->Last;?>"><?php echo $tao->First;?> <?php echo $tao->Last;?></option>
                                 <?php }?>
                           </select>
                          </div>     
