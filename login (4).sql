@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2017 at 12:20 AM
+-- Generation Time: Dec 03, 2017 at 03:53 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -83,7 +83,14 @@ INSERT INTO `educinfo` (`ApplicantNumber`, `Tschool`, `Tdegree`, `Tfrom`, `Tto`,
 (12, 'San Beda', 'HRM', 2000, 2014, 'graduated', '2017-11-14'),
 (13, 'TIP', 'Finacne', 2010, 2014, 'graduated', '2017-11-15'),
 (14, 'FEU', 'Tambay', 2000, 2017, 'graduated', '2017-11-15'),
-(17, 'TIP', 'HRM', 2000, 2004, 'graduated', '2017-11-24');
+(17, 'TIP', 'HRM', 2000, 2004, 'graduated', '2017-11-24'),
+(18, 'EARIST', 'BS Psycholo', 2013, 2017, 'graduated', '2017-11-27'),
+(19, 'Dumbledore', 'Mahika', 1998, 2002, 'graduated', '2017-11-27'),
+(21, 'sa ano', 'wala', 0, 0, 'graduated', '2017-12-02'),
+(22, 'LPU', 'hsajdh', 2009, 2013, 'graduated', '2017-12-02'),
+(23, 'Wala', 'wala din', 2000, 2000, 'graduated', '2017-12-03'),
+(24, 'LPU', 'MArine', 2010, 2015, 'graduated', '2017-12-03'),
+(25, 'ADU', 'dfnd', 2000, 2014, 'graduated', '2017-12-03');
 
 -- --------------------------------------------------------
 
@@ -133,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `history` (
   `date_login` datetime NOT NULL,
   `date_logout` datetime NOT NULL,
   PRIMARY KEY (`history_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `history`
@@ -157,7 +164,11 @@ INSERT INTO `history` (`history_id`, `PersonNumber`, `date_login`, `date_logout`
 (36, 5, '2017-11-15 06:43:02', '0000-00-00 00:00:00'),
 (37, 9, '2017-11-19 12:24:22', '0000-00-00 00:00:00'),
 (38, 6, '2017-11-22 07:42:35', '0000-00-00 00:00:00'),
-(39, 7, '2017-11-23 10:44:48', '0000-00-00 00:00:00');
+(39, 7, '2017-11-23 10:44:48', '0000-00-00 00:00:00'),
+(40, 5, '2017-11-27 09:18:58', '0000-00-00 00:00:00'),
+(41, 9, '2017-12-02 02:01:58', '0000-00-00 00:00:00'),
+(42, 8, '2017-12-03 03:55:05', '0000-00-00 00:00:00'),
+(43, 6, '2017-12-03 10:19:40', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -189,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `initialresult` (
   KEY `Interviewer` (`Interviewer`),
   KEY `ReferredBy` (`ReferredBy`),
   KEY `initialresult_ibfk_2` (`Gender`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `initialresult`
@@ -204,7 +215,8 @@ INSERT INTO `initialresult` (`InterviewID`, `ApplicantNumber`, `ApplicantName`, 
 (17, 12, 'aries canimo', 'Male', '09123456789', 'areis@dfns.com', '1990-10-15', 'AlabatQuezon', '', 'Manager1 Moto', '', 'Passed', 'Workforce and Assignment', 'manager4 Moto', 'Associate', '2017-11-15'),
 (18, 7, 'ryee msnd', 'Male', '82738247', 'nsdmd@nsd.com', '1997-11-14', 'nsmdnsmdnd', 'Tintin Canimo', 'Manager1 Moto', '', 'Failed', '', '', '', '2017-11-15'),
 (19, 10, 'christine canimo', 'Female', '09266363323', 'christine@yahoo.com', '1998-02-04', 'tahimik stCaloocan', 'manager3 Moto', 'Manager1 Moto', '', 'Passed', 'HRADAR', 'Manager5 Moto', 'Associate', '2017-11-15'),
-(20, 13, 'mille monica', 'Female', '123456789', 'millse@gmail.com', '1995-09-22', '116CAloocan', 'Christine Canimo', 'Manager1 Moto', '', 'Passed', 'Finance', 'Manager1 Moto', 'Administrator', '2017-11-15');
+(20, 13, 'mille monica', 'Female', '123456789', 'millse@gmail.com', '1995-09-22', '116CAloocan', 'Christine Canimo', 'Manager1 Moto', '', 'Passed', 'Finance', 'Manager1 Moto', 'Administrator', '2017-11-15'),
+(21, 19, 'harry potter', 'Male', '09123456789', 'harry@gmail.com', '1994-07-28', 'dun sa ano nga baHighgarden', 'Manage 2 Manager2', 'Manage 3 Manager3', '', 'Passed', 'Workforce and Assignment', 'manager4 Moto', 'Administrator', '2017-12-03');
 
 -- --------------------------------------------------------
 
@@ -231,7 +243,7 @@ CREATE TABLE IF NOT EXISTS `interview` (
   `Date_added` datetime NOT NULL,
   PRIMARY KEY (`ApplicantNumber`),
   UNIQUE KEY `Gender` (`Gender`,`Contact`,`Birthday`,`Employee`,`Date_added`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `interview`
@@ -248,7 +260,14 @@ INSERT INTO `interview` (`ApplicantNumber`, `FirstName`, `MiddleName`, `LastName
 (12, 'aries', 'dsnds', 'canimo', 'Alabat', 'Quezon', 'areis@dfns.com', 'Male', '09123456789', '1990-10-15', 'Intern', 0, '', 'Initial Interview', '2017-11-14 00:00:00'),
 (13, 'mille', 'ate', 'monica', '116', 'CAloocan', 'millse@gmail.com', 'Female', '123456789', '1995-09-22', 'Senior Administrator', 1, 'Christine Canimo', 'Final Interview', '2017-11-15 00:00:00'),
 (14, 'Blabla', 'bleble', 'vlovlo', 'tabi tabi st. brgy.uno', 'QC', 'blable@hehe.com', 'Female', '09123456789', '1992-07-16', 'Intern', 1, 'manager3 Moto', 'For initial', '2017-11-15 00:00:00'),
-(17, 'shey', 'villa', 'calzado', '14 angelo', 'QC', 'shey@gh.com', 'Female', '09175578453', '1994-04-12', 'manager', 1, 'Manage 4 Manager4', 'For initial', '2017-11-24 12:59:26');
+(17, 'shey', 'villa', 'calzado', '14 angelo', 'QC', 'shey@gh.com', 'Female', '09175578453', '1994-04-12', 'manager', 1, 'Manage 4 Manager4', 'For initial', '2017-11-24 12:59:26'),
+(18, 'ryee', 'kasndam', 'canimo', 'shdn', 'nsnf', 'nsdmd@nsd.com', 'Female', '09123456789', '1995-05-07', 'Associate', 1, 'Christine Canimo', 'For initial', '2017-11-27 09:51:12'),
+(19, 'harry', 'nsdn', 'potter', 'dun sa ano nga ba', 'Highgarden', 'harry@gmail.com', 'Male', '09123456789', '1994-07-28', 'Senior Administrator', 1, 'Manage 2 Manager2', 'Initial Interview', '2017-11-27 11:52:36'),
+(21, 'khym', 'shndsd', 'canimo', 'sdsf', 'ssa', 'dsnnnd@yahoo.com', 'Male', '092663636323', '1994-02-04', 'Associate', 0, '', 'For initial', '2017-12-02 03:02:44'),
+(22, 'melvin', 'veracruz', 'casanova', 'sdm', 'sfsdfds', 'dsnnnd@yahoo.com', 'Male', '09175578453', '1995-03-08', '', 0, '', 'For Initial', '2017-12-02 03:29:07'),
+(23, 'Blabla', 'sknd', 'smfn', 'jfnssm', 'nfsfmn', 'nfsnsf@fdf.com', 'Male', '09266363323', '1993-04-05', '', 0, '', 'For initial', '2017-12-03 03:58:27'),
+(24, 'tgd', 'fsfd', 'dfdf', 'Palahanan', 'Batangas', 'melvin@gmail.com', 'Male', '09175578453', '1994-02-05', 'Associate', 1, 'Christine Canimo', 'For initial', '2017-12-03 05:47:03'),
+(25, 'cvdgs', 'sfdsf', 'dfsd', 'dsfsd', 'ddsf', 'sdnd@hsj.com', 'Female', '23923288765', '1990-05-31', 'Associate', 1, 'Christine Canimo', 'For initial', '2017-12-03 06:07:54');
 
 -- --------------------------------------------------------
 
@@ -315,13 +334,20 @@ INSERT INTO `prevemploy` (`ApplicantNumber`, `Company`, `Job`, `Duration`, `NoEx
 (2, '', '', '', ''),
 (7, 'hehehe', '', '', ''),
 (8, 'Hexagon', 'Accountacy', '2 years', ''),
-(9, 'None', '', '', ''),
+(9, 'None', '', '', 'No Experience'),
 (10, '', '', '', ''),
 (11, '', '', '', 'No Experience'),
 (12, '', '', '', 'No Experience'),
 (13, 'Hexagon', 'Assistant', '1 year', NULL),
 (14, '', '', '', 'No Experience'),
-(17, '', '', '', 'No Experience');
+(17, '', '', '', 'No Experience'),
+(18, '', '', '', 'No Experience'),
+(19, '', '', '', 'No Experience'),
+(21, 'pearson', 'intern', '6 months', NULL),
+(22, 'madami', '', '2years', NULL),
+(23, '', '', '', 'No Experience'),
+(24, 'China', 'Marino', '1year', NULL),
+(25, '', '', '', 'No Experience');
 
 -- --------------------------------------------------------
 
