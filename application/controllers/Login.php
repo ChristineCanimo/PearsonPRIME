@@ -11,8 +11,23 @@ class Login extends CI_Controller {
 	public function index()
 	{
 		$li = $this->session->userdata('logged_in');
-		if($li == TRUE){
-			redirect ('Interview/index');
+        $pn = $this->session->userdata('PersonNumber');
+
+		if($li == TRUE ){
+			$result=$this->db->query("SELECT * FROM employees where PersonNumber = $pn")
+        				->result_array();
+        	
+			foreach ($result as $row)
+        	{
+                $usertype = $row['usertype'];
+       		}
+
+        	if ($usertype == 'admin'){
+					redirect ('adminforms');
+				}
+			else {
+					redirect ('openforms/');
+				}
 		}
 		else{
 			$this->load->view('login');
@@ -83,37 +98,49 @@ class Login extends CI_Controller {
 				$this->users_model->login($data['Username'], $data ['Password']);
 		
 				$result=$this->users_model->login($data['Username'], $data ['Password']);
-				foreach ($result as $row)
-        		{
-                $usertype = $row['usertype'];
-        		}
 
-                if(!$result) {
-                    redirect ('login_c/incorrect');
-                }
-                
-                else if ($usertype == 'admin') {
+				
+        		if ($result == FALSE){
+        			?>
+        			<script type="text/javascript">
+        			alert("Your Username and Password are incorrect");
+        			window.location.href='<?php echo base_url(); ?>';
+        			</script>
+        			<?php
+
+        		}
+        		 else {
+        		 if(is_array($result)){
+					foreach ($result as $row)
+        			{
+                	$usertype = $row['usertype'];
+        			}
+
+        		if ($usertype == 'admin') {
 					$login = array(
 			        'logged_in' => TRUE,
-			        'PersonNumber' => $result['0']['PersonNumber']
+			        'PersonNumber' => $result['0']['PersonNumber'],
+			        'usertype' => $result['0']['usertype']
 					);
 					$this->session->set_userdata($login);
 					$this->users_model->history();
-					redirect ('Login/logged');
+					redirect ('adminforms');
 
 				} else {
 					$login = array(
 			        'logged_in' => TRUE,
+			        'usertype' => $result['0']['usertype'],
 			        'PersonNumber' => $result['0']['PersonNumber'],
 					);
 					$this->session->set_userdata($login);
 					$this->users_model->history();
 					redirect ('openforms/');
 				}
-				
+				}
 			}
 		}	
 	}
+}
 
 		// Logout from admin page
 	public function logout() {

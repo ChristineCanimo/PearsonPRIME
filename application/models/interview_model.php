@@ -181,7 +181,7 @@ class interview_model extends CI_Model {
 
             $apply = array(
                 'ApplicantNumber' => $id, 
-                'Desired' => $this->input->post('PositionDesired'), 
+                'Desired' => $this->input->post('Desired'), 
                 'Referred' => $this->input->post('Referred'), 
                 'Employee' => $this->input->post('Employee'),
                 
@@ -207,6 +207,7 @@ class interview_model extends CI_Model {
 
     public function get_employees(){
         $this->db->from('employees');
+        $this->db->where('AssignStatus', 'Active');
         $query = $this->db->get();
         return $query->result();
 

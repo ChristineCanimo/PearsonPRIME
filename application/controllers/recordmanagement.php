@@ -18,14 +18,75 @@ class RecordManagement extends CI_Controller
 		if($li == TRUE){
 
 		$this->data['logs'] = $this->record_model->logged_in();
+		$this->data['cntmanageronlys'] = $this->record_model->cntmanageronly();
 		$this->data['ages'] = $this->record_model->age();
+		$this->data['cntfinalintnotifs'] = $this->record_model->cntfinalintnotif();
+        $this->data['cntreferrals'] = $this->record_model->cntreferral();
     	$id = $this->session->userdata('PersonNumber');
-    	$this->load->view('v_recordmanagement', $this->data);
+    	$this->load->view('forinitial', $this->data);
     	}
     	else {
     		redirect('walangli');
     	}
     }
+
+    function forfinal()
+    {	
+    	$li = $this->session->userdata('logged_in');
+		if($li == TRUE){
+
+		$this->data['logs'] = $this->record_model->logged_in();
+		$this->data['cntmanageronlys'] = $this->record_model->cntmanageronly();
+		$this->data['cntmanageronlys'] = $this->record_model->cntmanageronly();
+		$this->data['ages'] = $this->record_model->age();
+		$this->data['cntfinalintnotifs'] = $this->record_model->cntfinalintnotif();
+        $this->data['cntreferrals'] = $this->record_model->cntreferral();
+    	$id = $this->session->userdata('PersonNumber');
+    	$this->load->view('forfinal', $this->data);
+    	}
+    	else {
+    		redirect('walangli');
+    	}
+    }
+
+    Public function get_dept()
+	{
+		$result=$this->db->query("SELECT Distinct Department FROM `jobopenings` WHERE `NoNeeded` >> '0'")
+        				->result();
+        $data=array();
+		foreach($result as $r)
+		{
+			$data['value']=$r->Department;
+			$data['label']=$r->Department;
+			$json[]=$data;
+			
+			
+		}
+		echo json_encode($json);
+		
+
+	
+	}
+
+	Public function get_job()
+	{
+ 
+		  $result=$this->db->where('Department',$_POST['id'])
+						->get('jobopenings')
+						->result();
+     
+        $data=array();
+		foreach($result as $r)
+		{
+			$data['value']=$r->JobTitle;
+			$data['label']=$r->JobTitle;
+			$json[]=$data;
+			
+			
+		}
+		echo json_encode($json);
+
+	}
 
     public function logout() {
 		$this->load->model('users_model');	
@@ -53,25 +114,10 @@ class RecordManagement extends CI_Controller
 			if($li == TRUE){
 			$this->data['logs'] = $this->record_model->logged_in();
 			$this->data['records'] = $this->record_model->get_second($id);
+			$this->data['cntmanageronlys'] = $this->record_model->cntmanageronly();
 			$this->data['referrals'] = $this->record_model->referral();
-			$this->data['depts'] = $this->record_model->get_dept();
-	    	$this->load->view('finalrecords', $this->data);
-    	}
-	}
-
-	public function second1()
-    {
-    	$this->load->model('record_model');
-			
-			$data = $this->input->post();	
-
-			$result = $this->record_model->get_datafrmtbl($data);
-
-			$li = $this->session->userdata('logged_in');
-			if($li == TRUE){
-			$this->data['logs'] = $this->record_model->logged_in();
-			$this->data['records'] = $this->record_model->get_second1();
-			$this->data['referrals'] = $this->record_model->referral();
+			$this->data['cntfinalintnotifs'] = $this->record_model->cntfinalintnotif();
+	        $this->data['cntreferrals'] = $this->record_model->cntreferral();
 			$this->data['depts'] = $this->record_model->get_dept();
 	    	$this->load->view('finalrecords', $this->data);
     	}
@@ -90,8 +136,11 @@ class RecordManagement extends CI_Controller
 			$this->data['records'] = $this->record_model->get_datafrmtbl();
 			$this->data['referrals'] = $this->record_model->referral();
 			$this->data['logs'] = $this->record_model->logged_in();
+			$this->data['cntmanageronlys'] = $this->record_model->cntmanageronly();
 			$this->data['depts'] = $this->record_model->get_dept();
-	    	$this->load->view('recordsfrmtbl', $this->data);
+			$this->data['cntfinalintnotifs'] = $this->record_model->cntfinalintnotif();
+	        $this->data['cntreferrals'] = $this->record_model->cntreferral();
+	    	$this->load->view('records', $this->data);
     	}
     }
 
@@ -104,8 +153,11 @@ class RecordManagement extends CI_Controller
 			$this->data['records'] = $this->record_model->get_data($id);
 			$this->data['referrals'] = $this->record_model->referral();
 			$this->data['logs'] = $this->record_model->logged_in();
+			$this->data['cntfinalintnotifs'] = $this->record_model->cntfinalintnotif();
+	        $this->data['cntreferrals'] = $this->record_model->cntreferral();
+			$this->data['cntmanageronlys'] = $this->record_model->cntmanageronly();
 			$this->data['depts'] = $this->record_model->get_dept();
-	    	$this->load->view('records', $this->data);
+	    	$this->load->view('Admin/records', $this->data);
     	}
     	
 	}
@@ -136,6 +188,10 @@ class RecordManagement extends CI_Controller
 
 			redirect('recordmanagement/finalsuccess');
 		}
+
+		else{
+			echo "kahitanosabihinmo";
+		}
 	}
 
 	function initialsuccess1(){
@@ -155,7 +211,10 @@ class RecordManagement extends CI_Controller
 		if($li == TRUE){
 			
 		$this->data['logs'] = $this->record_model->logged_in();
+		$this->data['cntmanageronlys'] = $this->record_model->cntmanageronly();
 		$this->data['ids'] = $this->record_model->ids($id);
+		$this->data['cntfinalintnotifs'] = $this->record_model->cntfinalintnotif();
+        $this->data['cntreferrals'] = $this->record_model->cntreferral();
 
 	    $this->load->view('initialsuccess', $this->data);
 	}
@@ -167,6 +226,9 @@ class RecordManagement extends CI_Controller
 		if($li == TRUE){
 			
 		$this->data['logs'] = $this->record_model->logged_in();
+		$this->data['cntmanageronlys'] = $this->record_model->cntmanageronly();
+		$this->data['cntfinalintnotifs'] = $this->record_model->cntfinalintnotif();
+        $this->data['cntreferrals'] = $this->record_model->cntreferral();
 
 	    $this->load->view('finalsuccess', $this->data);
 	}
@@ -179,10 +241,13 @@ class RecordManagement extends CI_Controller
 		if($li == TRUE){
 			
 		$this->data['logs'] = $this->record_model->logged_in();
+		$this->data['cntmanageronlys'] = $this->record_model->cntmanageronly();
+		$this->data['cntfinalintnotifs'] = $this->record_model->cntfinalintnotif();
+        $this->data['cntreferrals'] = $this->record_model->cntreferral();
 		$this->data['ids'] = $this->record_model->ids($id);
 		
 
-	    $this->load->view('success', $this->data);
+	    $this->load->view('Admin/success', $this->data);
 	}
 	}
 

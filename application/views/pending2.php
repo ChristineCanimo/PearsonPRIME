@@ -3,9 +3,9 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
-    <title>Prime - Employee Records</title>
+    <title>Pearson People Services</title>
 
-    <meta name="description" content="Static &amp; Dynamic Tables" />
+    <meta name="description" content="Common form elements and layouts" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
     <!-- bootstrap & fontawesome -->
@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/font-awesome/4.5.0/css/font-awesome.min.css" />
 
     <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/css/jquery-ui.custom.min.css" />
+    <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/css/chosen.min.css" />
+    <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/css/bootstrap-timepicker.min.css" />
+    <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/css/daterangepicker.min.css" />
+    <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/css/bootstrap-colorpicker.min.css" />
+        
 
     <!-- text fonts -->
     <link rel="stylesheet" href="<?php echo base_url()?>interviewassets/css/fonts.googleapis.com.css" />
@@ -57,15 +65,47 @@
         </button>
 
         <div class="navbar-header pull-left">
-          <a href="homepage" class="navbar-brand">
+          <a href="" class="navbar-brand">
             <small>
-              <i class="fa fa-leaf"></i>
-              PPS Admin
+              <i class="fa fa-users"></i>
+              PPS Manila
             </small>
           </a>
         </div>
-<div class="navbar-buttons navbar-header pull-right" role="navigation">
+
+        <div class="navbar-buttons navbar-header pull-right" role="navigation">
           <ul class="nav ace-nav">
+
+            <li class="purple dropdown-modal">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+                <span class="badge badge-important"></span>
+              </a>
+
+              <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+                <li class="dropdown-header">
+                  <i class="ace-icon fa fa-exclamation-triangle"></i>
+                  Notifications
+                </li>
+
+                <li class="dropdown-content">
+                  <ul class="dropdown-menu dropdown-navbar navbar-pink">
+                    
+
+                    <li>
+                      <a href="<?php echo base_url(); ?>index.php/openforms/assessing">
+                        <i class="btn btn-xs btn-primary fa fa-user"></i>
+                        Final Interviews
+                        <span class="pull-right badge badge-info"><?php foreach($cntmanageronlys as $cntmanageronly){?><?php echo $cntmanageronly->cntmanageronly;?><?php }?></span>
+                      </a>
+                    </li>
+
+                    
+                  </ul>
+                </li>
+
+              </ul>
+            </li>
 
             <li class="light-blue dropdown-modal">
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">
@@ -74,7 +114,7 @@
                 <span class="user-info">
                   <small>Welcome,</small>
                   <?php foreach($logs as $log){?>
-                    <?php echo $log->First;?> <?php echo $log->Last;?><?php }?>
+                    <?php echo $log->First;?> <?php echo $log->Middle;?> <?php echo $log->Last;?><?php }?>
                 </span>
 
                 <i class="ace-icon fa fa-caret-down"></i>
@@ -98,7 +138,7 @@
                 <li class="divider"></li>
 
                 <li>
-                  <a href="logout">
+                  <a href="<?php echo base_url(); ?>index.php/Login/logout">
                     <i class="ace-icon fa fa-power-off"></i>
                     Logout
                   </a>
@@ -110,13 +150,12 @@
       </div><!-- /.navbar-container -->
     </div>
 
-
     <div class="main-container ace-save-state" id="main-container">
       <script type="text/javascript">
         try{ace.settings.loadState('main-container')}catch(e){}
       </script>
 
-      <div id="sidebar" class="sidebar                  responsive                    ace-save-state">
+      <div id="sidebar" class="sidebar      h-sidebar                navbar-collapse collapse          ace-save-state">
         <script type="text/javascript">
           try{ace.settings.loadState('sidebar')}catch(e){}
         </script>
@@ -151,9 +190,8 @@
           </div>
         </div><!-- /.sidebar-shortcuts -->
 
-        
         <ul class="nav nav-list">
-          <li class="">
+          <li class="hover">
             <a href="<?php echo base_url(); ?>index.php/openforms/">
               <i class="menu-icon fa fa-tachometer"></i>
               <span class="menu-text"> Dashboard </span>
@@ -161,40 +199,38 @@
 
             <b class="arrow"></b>
           </li>
-
           
 
           <li class="">
-            <a href="<?php echo base_url(); ?>index.php/Interview/" class="dropdown-toggle">
-              <i class="menu-icon fa fa-pencil-square-o"></i>
-              <span class="menu-text"> Add New Applicant </span>
-
+            <a href="<?php echo base_url(); ?>index.php/recordmanagement/" >
+              <i class="menu-icon fa fa-users"></i>
+              <span class="menu-text"> For Initial Interview </span>
             </a>
 
+            <b class="arrow"></b>
           </li>
 
           <li class="">
-            <a href="<?php echo base_url(); ?>index.php/recordmanagement/" class="dropdown-toggle">
-              <i class="menu-icon fa fa-list"></i>
-              <span class="menu-text"> For Interviews </span>
+            <a href="<?php echo base_url(); ?>index.php/recordmanagement/forfinal">
+              <i class="menu-icon fa fa-users"></i>
+              <span class="menu-text"> For Final Interview </span>
 
+              <b class="arrow fa fa-angle-down"></b>
             </a>
 
+            <b class="arrow"></b>
           </li>
-
-          <li class="active open">
-            <a href="<?php echo base_url(); ?>index.php/openforms/pending" class="dropdown-toggle">
-              <i class="menu-icon   fa fa-list-alt"></i>
-              <span class="menu-text"> Pending Applicants </span>
-
-            </a>
-
-          </li>
-
           
-            </ul>
+          <li class="">
+            <a href="<?php echo base_url(); ?>index.php/openforms/pending" >
+              <i class="menu-icon fa fa-pencil"></i>
+              <span class="menu-text"> Assessing Applicants </span>
+            </a>
+
+            <b class="arrow"></b>
           </li>
-        </ul><!-- /.nav-list -->
+        </ul>
+            <!-- /.nav-list -->
 
         <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
           <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
@@ -202,25 +238,22 @@
       </div>
 
       <div class="main-content">
+      
+            
         <div class="main-content-inner">
           <div class="breadcrumbs ace-save-state" id="breadcrumbs">
             <ul class="breadcrumb">
               <li>
                 <i class="ace-icon fa fa-home home-icon"></i>
-                <a href="homepage">Home</a>
+                <a href="#">Home</a>
               </li>
-
-              <li>
-                Employee Records
-              </li>
-              <li class="active">Record Managment</li>
+              <li class="active">Dashboard</li>
             </ul><!-- /.breadcrumb -->
 
             <div class="nav-search" id="nav-search">
               
             </div><!-- /.nav-search -->
           </div>
-
           <div class="page-content">
             <!--/ .can add other functions here-->
 
@@ -231,7 +264,7 @@
 
 <?php  
  $connect = mysqli_connect("localhost", "root", "", "login");  
- $query ="SELECT * FROM `pendingapplicants` JOIN referrals ON pendingapplicants.AssignedPosition = referrals.JobTitle WHERE Status = 'Pending'";  
+ $query ="SELECT * FROM `pendingapplicants` JOIN referrals ON pendingapplicants.AssignedPosition = referrals.JobTitle WHERE Status = 'For Assessing'";  
  $result = mysqli_query($connect, $query);  
  ?>
 

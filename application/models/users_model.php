@@ -45,6 +45,7 @@ class users_model extends CI_Model {
 	public function login($username, $password) {
 
 		$this->db->where('Username',$username);
+
         $result = $this->db->get('employees');
         
         $result = $result->result_array();

@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Prime - Employee Records</title>
+		<title>Pearson People Services</title>
 
 		<meta name="description" content="Static &amp; Dynamic Tables" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -33,7 +33,7 @@
 		<!-- inline styles related to this page -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
 		<!-- ace settings handler -->
-		<script src="interviewassets/js/ace-extra.min.js"></script>
+		<script src="<?php echo base_url()?>interviewassets/js/ace-extra.min.js"></script>
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
@@ -48,31 +48,72 @@
 				font-weight: bold;
 			}
 		</style>
-	</head>
+	 </head>
 
-	<body class="no-skin">
-		<div id="navbar" class="navbar navbar-default          ace-save-state">
-			<div class="navbar-container ace-save-state" id="navbar-container">
-				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
-					<span class="sr-only">Toggle sidebar</span>
+  <body class="no-skin">
+    <div id="navbar" class="navbar navbar-default          ace-save-state">
+      <div class="navbar-container ace-save-state" id="navbar-container">
+        <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+          <span class="sr-only">Toggle sidebar</span>
 
-					<span class="icon-bar"></span>
+          <span class="icon-bar"></span>
 
-					<span class="icon-bar"></span>
+          <span class="icon-bar"></span>
 
-					<span class="icon-bar"></span>
-				</button>
+          <span class="icon-bar"></span>
+        </button>
 
-				<div class="navbar-header pull-left">
-					<a href="homepage" class="navbar-brand">
-						<small>
-							<i class="fa fa-leaf"></i>
-							PPS Admin
-						</small>
-					</a>
-				</div>
-<div class="navbar-buttons navbar-header pull-right" role="navigation">
+        <div class="navbar-header pull-left">
+          <a href="<?php echo base_url(); ?>index.php/adminforms" class="navbar-brand">
+            <small>
+              <i class="fa fa-users"></i>
+              PPS Manila
+            </small>
+          </a>
+        </div>
+
+        <div class="navbar-buttons navbar-header pull-right" role="navigation">
           <ul class="nav ace-nav">
+
+          <li class="purple dropdown-modal">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+                <span class="badge badge-important"></span>
+              </a>
+
+              <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+                <li class="dropdown-header">
+                  <i class="ace-icon fa fa-exclamation-triangle"></i>
+                  Notifications
+                </li>
+
+                <li class="dropdown-content">
+                  <ul class="dropdown-menu dropdown-navbar navbar-pink">
+                    <li>
+                      <a href="<?php echo base_url(); ?>index.php/adminforms/referraltoday">
+                        <div class="clearfix">
+                          <span class="pull-left">
+                            <i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
+                            Referral Incentives
+                          </span>
+                          <span class="pull-right badge badge-info"><?php foreach($cntreferrals as $cntreferral){?><?php echo $cntreferral->cntreferral;?><?php }?></span>
+                        </div>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="<?php echo base_url(); ?>index.php/adminforms/assessing">
+                        <i class="btn btn-xs btn-primary fa fa-user"></i>
+                        Final Interviews
+                        <span class="pull-right badge badge-info"><?php foreach($cntfinalintnotifs as $cntfinalintnotif){?><?php echo $cntfinalintnotif->cntfinalintnotif;?><?php }?></span>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li>
+
+              </ul>
+            </li>
 
             <li class="light-blue dropdown-modal">
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">
@@ -81,7 +122,7 @@
                 <span class="user-info">
                   <small>Welcome,</small>
                   <?php foreach($logs as $log){?>
-                    <?php echo $log->First;?> <?php echo $log->Last;?><?php }?>
+                    <?php echo $log->First;?> <?php echo $log->Middle;?> <?php echo $log->Last;?><?php }?>
                 </span>
 
                 <i class="ace-icon fa fa-caret-down"></i>
@@ -105,7 +146,7 @@
                 <li class="divider"></li>
 
                 <li>
-                  <a href="logout">
+                  <a href="<?php echo base_url(); ?>index.php/Login/logout">
                     <i class="ace-icon fa fa-power-off"></i>
                     Logout
                   </a>
@@ -117,89 +158,208 @@
       </div><!-- /.navbar-container -->
     </div>
 
+    <div class="main-container ace-save-state" id="main-container">
+      <script type="text/javascript">
+        try{ace.settings.loadState('main-container')}catch(e){}
+      </script>
 
-		<div class="main-container ace-save-state" id="main-container">
-			<script type="text/javascript">
-				try{ace.settings.loadState('main-container')}catch(e){}
-			</script>
+      <div id="sidebar" class="sidebar      h-sidebar                navbar-collapse collapse          ace-save-state">
+        <script type="text/javascript">
+          try{ace.settings.loadState('sidebar')}catch(e){}
+        </script>
 
-			<div id="sidebar" class="sidebar                  responsive                    ace-save-state">
-				<script type="text/javascript">
-					try{ace.settings.loadState('sidebar')}catch(e){}
-				</script>
+        <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+          <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+            <button class="btn btn-success">
+              <i class="ace-icon fa fa-signal"></i>
+            </button>
 
-				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-						<button class="btn btn-success">
-							<i class="ace-icon fa fa-signal"></i>
-						</button>
+            <button class="btn btn-info">
+              <i class="ace-icon fa fa-pencil"></i>
+            </button> 
 
-						<button class="btn btn-info">
-							<i class="ace-icon fa fa-pencil"></i>
-						</button>
+            <button class="btn btn-warning">
+              <i class="ace-icon fa fa-users"></i>
+            </button>
 
-						<button class="btn btn-warning">
-							<i class="ace-icon fa fa-users"></i>
-						</button>
+            <button class="btn btn-danger">
+              <i class="ace-icon fa fa-cogs"></i>
+            </button>
+          </div>
 
-						<button class="btn btn-danger">
-							<i class="ace-icon fa fa-cogs"></i>
-						</button>
-					</div>
+          <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+            <span class="btn btn-success"></span>
 
-					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-						<span class="btn btn-success"></span>
+            <span class="btn btn-info"></span>
 
-						<span class="btn btn-info"></span>
+            <span class="btn btn-warning"></span>
 
-						<span class="btn btn-warning"></span>
+            <span class="btn btn-danger"></span>
+          </div>
+        </div><!-- /.sidebar-shortcuts -->
 
-						<span class="btn btn-danger"></span>
-					</div>
-				</div><!-- /.sidebar-shortcuts -->
-
-				
-        <ul class="nav nav-list">
+        
+        <ul class="nav nav-list">         
           <li class="">
-            <a href="<?php echo base_url(); ?>index.php/openforms/">
-              <i class="menu-icon fa fa-tachometer"></i>
-              <span class="menu-text"> Dashboard </span>
+            <a href="<?php echo base_url(); ?>index.php/adminforms/" class="dropdown-toggle">
+              <i class="menu-icon fa fa-user"></i>
+              <span class="menu-text"> Administrators </span>
+            </a>
+          </li>
+
+          <li class="hover">
+            <a href="<?php echo base_url(); ?>index.php/openforms/" class="dropdown-toggle">
+              <i class="menu-icon fa fa-users"></i>
+              <span class="menu-text"> Recruitment </span>
+
+              <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+              <li class="">
+                <a href="<?php echo base_url(); ?>index.php/Interview/">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  New Applicant
+                </a>
+
+              <li class="hover">
+                <a class="dropdown-toggle">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  For Interview
+                </a>
+                  <b class="arrow"></b>
+
+                  <ul class="submenu">
+                    <li class="">
+                      <a href="<?php echo base_url(); ?>index.php/interviewprocess">
+                        For Initial Interview
+                      </a>
+                    </li>
+
+                    <li class="">
+                      <a href="<?php echo base_url(); ?>index.php/interviewprocess/aforfinal">
+                        For Final Interview
+                      </a>
+                    </li>
+
+                  </ul>
+
+              </li>
+
+              <li class="">
+                <a href="<?php echo base_url(); ?>index.php/adminforms/assessing">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  Pending Applicants
+                </a>
+
+                <b class="arrow"></b>
+              </li>
+
+              </li>
+            </ul>
+          </li>
+
+          <li class="hover">
+            <a href="" class="dropdown-toggle">
+              <i class="menu-icon fa fa-list"></i>
+              <span class="menu-text">
+                Employee Records
+              </span>
+
+              <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+              <li class="">
+                <a href="<?php echo base_url(); ?>index.php/newhireforms/">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  New Hire Form
+                </a>
+
+                <b class="arrow"></b>
+
+              </li>
+
+              <li class="">
+                <a href="<?php echo base_url(); ?>index.php/adminforms/arecord">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  Record Management
+                </a>
+
+                <b class="arrow"></b>
+              </li>
+            </ul>
+          </li>
+
+          <li class="">
+            <a href="<?php echo base_url(); ?>index.php/adminforms/ajobvacancy">
+              <i class="menu-icon fa fa-check"></i>
+              <span class="menu-text">Job Vacancy</span>
+             </a>
+          </li> 
+
+          <li class="">
+            <a href="<?php echo base_url(); ?>index.php/adminforms/rpayroll">
+              <i class="menu-icon fa fa-signal"></i>
+              <span class="menu-text">Tracker</span>
+             </a>
+            
+          </li> 
+
+          <li class="">
+            <a href="<?php echo base_url(); ?>index.php/adminforms/acalendar">
+              <i class="menu-icon fa fa-calendar"></i>
+
+              <span class="menu-text">
+                Calendar of Activities
+                  <b class="arrow"></b>
+                      </span>
             </a>
 
             <b class="arrow"></b>
           </li>
 
-          
+          <li class="hover">
+            <a href="#" class="dropdown-toggle">
+              <i class="menu-icon fa fa-file-o"></i>
 
-          <li class="">
-            <a href="<?php echo base_url(); ?>index.php/Interview/" class="dropdown-toggle">
-              <i class="menu-icon fa fa-pencil-square-o"></i>
-              <span class="menu-text"> Add New Applicant </span>
+              <span class="menu-text">
+                How To Use
 
+                <span class="badge badge-primary"></span>
+              </span>
+
+              <b class="arrow fa fa-angle-down"></b>
             </a>
 
-          </li>
+            <b class="arrow"></b>
 
-          <li class="active open">
-            <a href="<?php echo base_url(); ?>index.php/recordmanagement/" class="dropdown-toggle">
-              <i class="menu-icon fa fa-pencil-square-o"></i>
-              <span class="menu-text"> For Interviews </span>
+            <ul class="submenu">
+              <li class="">
+                <a href="faq">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  FAQ
+                </a>
 
-            </a>
+                <b class="arrow"></b>
+              </li>
 
-          </li>
-          <li class="">
-            <a href="<?php echo base_url(); ?>index.php/openforms/pending" class="dropdown-toggle">
-              <i class="menu-icon 	fa fa-list-alt"></i>
-              <span class="menu-text"> Pending Applicants </span>
+              <li class="">
+                <a href="about">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  About
+                </a>
 
-            </a>
+                <b class="arrow"></b>
+              </li>
 
-          </li>
-          
             </ul>
           </li>
-        </ul><!-- /.nav-list -->
+        </ul>
 
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
@@ -216,9 +376,9 @@
 							</li>
 
 							<li>
-								Employee Records
+								For Final Interview
 							</li>
-							<li class="active">Record Managment</li>
+							<li class="active">Applicant for Final Interview</li>
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -232,69 +392,17 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-<?php  
- $connect = mysqli_connect("localhost", "root", "", "login");  
- $query ="SELECT * FROM `initialresult` JOIN `interview` ON initialresult.ApplicantNumber = interview.ApplicantNumber WHERE initialresult.Result = 'Passed' AND interview.Status = 'Initial Interview'";  
- $result = mysqli_query($connect, $query);  
- ?>
+
 
 								<div class="clearfix">
 											<div class="pull-right tableTools-container"></div>
 										</div>
-										<div class="table-header">
-											Applicants for Final Interview
-										</div>
+										
 
 										<!-- div.table-responsive -->
 
 										<!-- div.dataTables_borderWrap -->
-										<div>
-											<table id="dynamic-table" class="table table-striped table-bordered table-hover" style="overflow:auto" autocomplete="on">
-												<thead>
-													<tr>
-
-													    <th>Applicant</th>
-														<th class="hidden-480">Referred By</th>
-
-														<th>
-															<i class="ace-icon fa fa-file-o bigger-110 hidden-480"></i>
-															Initial Interviewer
-														</th>
-														<th class="hidden-480">Department</th>
-                                                        <th>Manager</th>
-														<th>Job Title</th>
-													
-
-													</tr>
-												</thead>
-
-
-												<tbody>
-												<?php
-												while($row=mysqli_fetch_array($result))
-												{
-													echo '
-													<tr>
-														<td class="center">
-															<form action="second1" method="post">
-															<input type="hidden" value="'.$row["ApplicantNumber"].'" name="ApplicantNumber">
-															<input type="submit" style="border:none; background:none; color:blue" value="'.$row["ApplicantName"].'">
-															</form>
-														</td>
-														<td>'.$row["ReferredBy"].'</td>
-														<td>'.$row["Interviewer"].'</td>
-														<td class="hidden-480">'.$row["DepartmentName"].'</td>
-														<td>'.$row["Manager"].'</td>
-														<td>'.$row["AssignedPosition"].'</td>
-
-                                                        
-													</tr>
-													';
-													} 	
-													?>	
-												</tbody>
-											</table>
-										</div>
+										
 									</div>
 								</div>
 
@@ -305,13 +413,31 @@
 
                   <div class="row">
                     <div class="col-xs-12 col-sm-12">
-                        <div class="widget-header">
-                          <h4 class="widget-title">Applicant's Information</h4>
+                        <div class="widget-header widget-header-large">
+                        <h3 class="widget-title grey lighter">
+                          <i class="ace-icon fa fa-leaf green"></i>
+                          Customer Invoice
+                        </h3>
+
+                        <div class="widget-toolbar no-border invoice-info">
+                          <span class="invoice-info-label">Invoice:</span>
+                          <span class="red">#121212</span>
+
+                          <br />
+                          <span class="invoice-info-label">Date:</span>
+                          <span class="blue">04/04/2014</span>
                         </div>
+
+                        <div class="widget-toolbar hidden-480">
+                          <a href="#">
+                            <i class="ace-icon fa fa-print"></i>
+                          </a>
+                        </div>
+                      </div>
 
                         <div class="widget-body">
                           <div class="widget-main">
-                          	<form method="Post" if="initial" action="insert_final">
+                          	<form method="Post" if="initial" action="<?php echo base_url()?>index.php/recordmanagement/insert_final">
 									<?php foreach($records as $record){?>
                             <table width="80%">
                               <tr>
@@ -466,7 +592,7 @@
                         		<tr>
                               		<td>
                                       <div style="padding: 5px;">
-                                        <h4 class="widget-title blue">Previous Employment</h4>
+                                        <h4 class="widget-title blue"><b>Previous Employment</b></h4>
                                     </div>
                                 	</td>
                                 </tr>
@@ -519,14 +645,14 @@
                         		</tr>
                         		<tr>
                               		<td>
-                                      <div style="padding: 5px;">
-                                        <h5 class="widget-title blue">To be filled up by the Interviewer</h5>
+                                      <div style="padding: 8px;">
+                                        <h5 class="widget-title blue"><b>Employment Information</b></h5>
                                     </div>
                                 	</td>
                                 </tr>
                                   <tr>
                                     <td>
-                                      <div style="padding: 5px;">
+                                      <div style="padding: 8px;">
                               <label style="float: right;" for="form-field-8">Position Desired : </label>
                                     </div>
                                     </td>
@@ -536,7 +662,7 @@
                                   </tr>
                                   <tr>
                                     <td>
-                                      <div style="padding: 5px;">
+                                      <div style="padding: 8px;">
                               <label style="float: right;" for="form-field-8">Referred By : </label>
                                     </div>
                                     </td>
@@ -548,7 +674,7 @@
                                   </tr>
                                     <tr>
                                       <td>
-                            <div style="padding: 5px;">
+                            <div style="padding: 8px;">
                               <label style="float: right;" for="form-field-9">Initial Interviewer : </label>
                             </div>
                                   </td>
@@ -558,114 +684,70 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                      <td>
-                            <div style="padding: 5px;">
-                              <label style="float: right;" for="form-field-9">Final Interviewer : </label>
-                            </div>
-                                  </td>
-                                	<input type="hidden" value="<?php echo $record->Manager;?>" name="Finalinterviewer">
                                   <td>
-                                      <?php echo $record->Manager;?>
+                            <div style="padding: 8px;">
+                              <label style="float: right;" for="form-field-8">Comments : </label>
+                            </div>
+                            </td>
+                          		<td>
+                            	<?php echo $record->Comments;?>
+                            	</td>
+                            </tr>
+                            <tr>
+                                  <td>
+                              <div style="padding: 8px;">
+                              <label style="float: right;" for="form-field-8">Result: </label>
+                                  </div>
+                                    </td>
+                                    <td>
+                                  <?php echo $record->Result;?>
+                                    </td>
+                                  </tr>
+                                <tr>
+                                  <td>
+                              <div style="padding: 8px;">
+                              <label style="float: right;" for="form-field-8">Assigned Department : </label>
+                                  </div>
+                                    </td>
+                                    <td>
+                                  <?php echo $record->DepartmentName;?>
+                                    </td>
+                                  </tr>
+                                <tr>
+                                  <td>
+                              <div style="padding: 8px;">
+                              <label style="float: right;" for="form-field-8">Assigned Manager : </label>
+                                  </div>
+                                    </td>
+                                    <td>
+                                  <?php echo $record->Manager;?>
                                     </td>
                                 </tr>
                                 <tr>
                                   <td>
-                              <label style="float: right;" for="form-field-8">Comments : </label>
-                            </td>
-                          		<td>
-                            <div>
-                            	<textarea placeholder="Well, say something!" id="status" cols="50" rows="3" name="Comment"></textarea>
-                            </div><br>
-                            	</td>
-                            </tr>
-                            
+                              <div style="padding: 8px;">
+                              <label style="float: right;" for="form-field-8">Assigned Position : </label>
+                                  </div>
+                                    </td>
+                                    <td>
+                                  <?php echo $record->AssignedPosition;?>
+                                    </td>
+                                  </tr>
                         </table>
-
-                            <div style="padding: 5px;">
-                              <section id="mypass" form="msform" style="display: block;">
-                                <table width="80%">
-                                  <tr style="padding: 5px;">
-                                    <td>
-                              <div style="padding: 5px;">
-                              <label style="float: right;" for="form-field-8">Department : </label>
-                                  </div>
-                                    </td>
-                                    <td>
-                              <select class="chosen-select form-control" name="DepartmentName" id="choose" data-placeholder="Department Name"><?php echo $record->DepartmentName;?>
-                                <option></option>
-                                <?php foreach($depts as $dept){?>
-                                <option value="<?php echo $dept->Manager;?>"><?php echo $dept->DepartmentName;?></option>
-                                <?php }?>
-                          		</select><br>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                              <div style="padding: 5px;">
-                              <label style="float: right;" for="form-field-8">Manager : </label>
-                                  </div>
-                                    </td>
-                                    <td>
-                              <input type="text" readonly="" id="manager" style="padding: 5px;" class="form-control" placeholder="Manager" name="Manager" value="<?php echo $record->Manager;?>" /><br>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                              <div style="padding: 5px;">
-                              <label style="float: right;" for="form-field-8">Assigned Position (Job Title) : </label>
-                                  </div>
-                                    </td>
-                                    <td>
-                                 <select class="chosen-select form-control" name="AssignedPosition" id="form-field-1" data-placeholder="Job Title"><?php echo $record->AssignedPosition;?>
-                                <option><?php echo $record->AssignedPosition;?></option>
-                                <?php foreach($referrals as $referral){?>
-                                <option value="<?php echo $referral->JobTitle;?>"><?php echo $referral->JobTitle;?></option>
-                                <?php }?>
-                          		</select>
-                              <input type="hidden" name="Status" value="Pending">
-                              <input type="hidden" name="Date_added" value="<?php date_default_timezone_set("Asia/Manila"); echo date("Y/m/d h:i:sa") ?>">
-                                    </td>
-                                  </tr>
-                                  <tr>
-                            	<td>
-                            <label style="float: right;" for="form-field-8">Result : </label>
-                            	</td>
-                            	<td>
-                              <div class="radio">
-                              <label>
-                                <input name="FinalResult" value="Passed" type="radio" class="ace" />
-                                <span class="lbl"> Passed</span>
-                              </label>
-                            </div>
-                          		</td>
-                          		<td>
-                            <div class="radio">
-                              <label>
-                                <input name="FinalResult" value="Failed" type="radio" class="ace" />
-                                <span class="lbl"> Failed</span>
-                              </label>
-                            </div>
-                            	</td>
-                            </tr>
-                                </table>
-                              </section>
-                            </div>
 
                             <?php }?>
 
-                            <div class="clearfix form-actions">
-                    <div class="col-md-offset-3 col-md-9">
-                      <button class="btn" type="reset">
-                        <i class="ace-icon fa fa-undo bigger-110"></i>
-                        Reset
-                      </button>
+<br>
+<br>
+<br>
 
-                      &nbsp; &nbsp; &nbsp;
-                      <button class="btn btn-info" type="submit">
-                        <i class="ace-icon fa fa-arrow-right bigger-110"></i>
-                        Submit
-                      </button>
-                      
+                  <div class="clearfix form-actions">
+                    <div class="col-md-offset-5 col-md-9">
+                      <a class="btn btn-primary" href="<?php echo base_url(); ?>index.php/interviewprocess/aforfinal">
+                        <i class="ace-icon fa fa-arrow-left bigger-110"></i>
+                        Back
+                      </a>
+
                       </form>
                     </div>
                   </div>
@@ -738,9 +820,9 @@
 			<div class="footer">
 				<div class="footer-inner">
 					<div class="footer-content">
-						<span class="smaller-100">
-							<span class="blue bolder">PRIME</span>
-							 &copy; 2017. All rights reserved.
+						<span class="smaller-90">
+							<span class="blue bolder">PACAPE</span>
+							 All rights reserved &copy; 2017-2018
 						</span>
 					</div>
 				</div>
@@ -782,7 +864,7 @@
 	});
         </script>
 		<!--[if !IE]> -->
-		<script src="interviewassets/js/jquery-2.1.4.min.js"></script>
+		<script src="<?php echo base_url()?>interviewassets/js/jquery-2.1.4.min.js"></script>
 
 		<!-- <![endif]-->
 
@@ -790,25 +872,25 @@
 <script src="assets/js/jquery-1.11.3.min.js"></script>
 <![endif]-->
 		<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='interviewassets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+			if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo base_url()?>interviewassets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
-		<script src="interviewassets/js/bootstrap.min.js"></script>
+		<script src="<?php echo base_url()?>interviewassets/js/bootstrap.min.js"></script>
 
 		<!-- page specific plugin scripts -->
-		<script src="interviewassets/js/jquery.dataTables.min.js"></script>
-		<script src="interviewassets/js/jquery.dataTables.bootstrap.min.js"></script>
-		<script src="interviewassets/js/dataTables.buttons.min.js"></script>
-		<script src="interviewassets/js/buttons.flash.min.js"></script>
-		<script src="interviewassets/js/buttons.html5.min.js"></script>
-		<script src="interviewassets/js/buttons.print.min.js"></script>
-		<script src="interviewassets/js/buttons.colVis.min.js"></script>
-		<script src="interviewassets/js/dataTables.select.min.js"></script> 
+		<script src="<?php echo base_url()?>interviewassets/js/jquery.dataTables.min.js"></script>
+		<script src="<?php echo base_url()?>interviewassets/js/jquery.dataTables.bootstrap.min.js"></script>
+		<script src="<?php echo base_url()?>interviewassets/js/dataTables.buttons.min.js"></script>
+		<script src="<?php echo base_url()?>interviewassets/js/buttons.flash.min.js"></script>
+		<script src="<?php echo base_url()?>interviewassets/js/buttons.html5.min.js"></script>
+		<script src="<?php echo base_url()?>interviewassets/js/buttons.print.min.js"></script>
+		<script src="<?php echo base_url()?>nterviewassets/js/buttons.colVis.min.js"></script>
+		<script src="<?php echo base_url()?>interviewassets/js/dataTables.select.min.js"></script> 
 		
 
 
 		<!-- ace scripts -->
-		<script src="interviewassets/js/ace-elements.min.js"></script>
-		<script src="interviewassets/js/ace.min.js"></script>
+		<script src="<?php echo base_url()?>interviewassets/js/ace-elements.min.js"></script>
+		<script src="<?php echo base_url()?>interviewassets/js/ace.min.js"></script>
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
